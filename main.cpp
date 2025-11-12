@@ -22,7 +22,6 @@
 
         Numerical_UI ui;
 
-
         string name1, name2;
         cout << "Enter name of Player 1 (odd numbers): ";
         cin >> name1;
@@ -34,19 +33,22 @@
 
         Player<int>* players[2] = { p1, p2 };
 
-
         Numerical_Board board;
-
 
         GameManager<int> game(&board, players, &ui);
         game.run();
 
-        
-        cout << "Game Over!\n";
-        if (board.is_win(p1)) cout << p1->get_name() << " wins! 🎉\n";
-        else if (board.is_win(p2)) cout << p2->get_name() << " wins! 🎉\n";
-        else cout << "It's a draw! 🤝\n";
+        cout << " Game Over! " << endl;
+
+        if (board.is_win(p1)) {
+            cout << p1->get_name() << " wins! " << endl;
+        }
+        else if (board.is_win(p2)) {
+            cout << p2->get_name() << " wins! " << endl;
+        }
+        else {
+            cout << " It's a draw! " << endl;
+        }
 
         return 0;
-    }
-    ;
+    };

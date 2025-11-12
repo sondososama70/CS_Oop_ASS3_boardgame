@@ -161,12 +161,12 @@
 using namespace std;
 
 class Numerical_Board : public Board<int> {
-    set<int> used_numbers;   // لتخزين الأرقام اللي اتلعبت
+    set<int> used_numbers;
 public:
     Numerical_Board() : Board(3, 3) {
         for (auto& r : board)
             for (auto& c : r)
-                c = 0; // الصفر معناها خانة فاضية
+                c = 0;
     }
 
     void print_board() {
@@ -186,44 +186,38 @@ public:
         int y = move->get_y();
         int num = move->get_symbol();
 
-        // تحقق من حدود البورد
         if (x < 0 || x >= 3 || y < 0 || y >= 3) {
-            cout << "❌ Invalid cell!\n";
+            cout << "Invalid cell!" << endl;
             return false;
         }
 
-        // الخانة فاضية؟
         if (board[x][y] != 0) {
-            cout << "❌ Cell already used!\n";
+            cout << " Cell already used!" << endl;
             return false;
         }
 
-        // الرقم في المدى الصحيح؟
         if (num < 1 || num > 9) {
-            cout << "❌ Number must be between 1 and 9!\n";
+            cout << " Number must be between 1 and 9! " << endl;
             return false;
         }
 
-        // الرقم اتلعب قبل كده؟
         if (used_numbers.count(num)) {
-            cout << "❌ Number already played!\n";
+            cout << " Number already played! " << endl;
             return false;
         }
 
-        // التحقق من الدور: Player 1 odd, Player 2 even
         bool isOdd = (num % 2 != 0);
         bool firstPlayerTurn = (n_moves % 2 == 0);
 
         if (firstPlayerTurn && !isOdd) {
-            cout << "❌ Player 1 must play odd numbers!\n";
+            cout << " Player 1 must play odd numbers! " << endl;
             return false;
         }
         if (!firstPlayerTurn && isOdd) {
-            cout << "❌ Player 2 must play even numbers!\n";
+            cout << " Player 2 must play even numbers! " << endl;
             return false;
         }
 
-        // كل شيء تمام ✅
         board[x][y] = num;
         used_numbers.insert(num);
         n_moves++;
@@ -233,19 +227,17 @@ public:
     }
 
     bool check_sum_15() {
-        // صفوف
+
         for (int i = 0; i < 3; i++)
             if (board[i][0] && board[i][1] && board[i][2] &&
                 board[i][0] + board[i][1] + board[i][2] == 15)
                 return true;
 
-        // أعمدة
         for (int j = 0; j < 3; j++)
             if (board[0][j] && board[1][j] && board[2][j] &&
                 board[0][j] + board[1][j] + board[2][j] == 15)
                 return true;
 
-        // أقطار
         if (board[0][0] && board[1][1] && board[2][2] &&
             board[0][0] + board[1][1] + board[2][2] == 15)
             return true;
