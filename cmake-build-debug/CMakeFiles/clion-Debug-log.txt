@@ -1,4 +1,6 @@
-"C:\Program Files\JetBrains\CLion 2025.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2025.1/bin/ninja/win/x64/ninja.exe" -G Ninja -S "D:\GitHub Repo\sounds\CS_ASSIGNMENT2_SOUND" -B "D:\GitHub Repo\sounds\CS_ASSIGNMENT2_SOUND\cmake-build-debug"
--- Configuring done (0.2s)
--- Generating done (0.0s)
--- Build files have been written to: D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug
+"C:\Users\mariam\OneDrive - MAM (Faculty of Engineering)\Desktop\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S "C:\Users\mariam\OneDrive - MAM (Faculty of Engineering)\Documents\GitHub\CS_Oop_ASS3_boardgame" -B "C:\Users\mariam\OneDrive - MAM (Faculty of Engineering)\Documents\GitHub\CS_Oop_ASS3_boardgame\cmake-build-debug"
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.31 or higher is required.  You are running version 3.30.5
+
+
+-- Configuring incomplete, errors occurred!
