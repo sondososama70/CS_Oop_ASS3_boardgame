@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\CS_ASSIGNMENT2_SOUND.dir\\main.cpp.obj",
+            "outputs": [
+                "C:\\Users\\mariam\\OneDrive - MAM (Faculty of Engineering)\\Documents\\GitHub\\CS_Oop_ASS3_boardgame\\out\\build\\x64-Debug\\vc140.pdb",
+                "CMakeFiles\\CS_ASSIGNMENT2_SOUND.dir\\main.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}

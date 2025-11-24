@@ -1,0 +1,3 @@
+C:/Users/mariam/OneDrive - MAM (Faculty of Engineering)/Documents/GitHub/CS_Oop_ASS3_boardgame/out/build/x64-Debug/CMakeFiles/CS_ASSIGNMENT2_SOUND.dir
+C:/Users/mariam/OneDrive - MAM (Faculty of Engineering)/Documents/GitHub/CS_Oop_ASS3_boardgame/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/mariam/OneDrive - MAM (Faculty of Engineering)/Documents/GitHub/CS_Oop_ASS3_boardgame/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
