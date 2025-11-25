@@ -2,110 +2,138 @@
 #include "BoardGame_Classes.h"
 #include "XO_Board.h"
 #include "XO_UI.h"
-#include "SUS_Board.h"
-#include "SUS_UI.h"
+#include "SOS_Board.h"
+#include "SOS_UI.h"
+#include "XO_Classes.h"
 
+using namespace std;
 
 void displayMainMenu() {
-    cout << "Select a Game:" << endl;
-    cout << "1. Numerical Tic Tac Toe" << endl;
-    cout << "2. X-O Game" << endl;
-    cout << "3. SUS Game" << endl;
-    cout << "4. Exit" << endl;
-    cout << "Please enter your choice (1-4): ";
-}
-
-void displayGameRules() {
-    cout << "Game Rules:" << endl;
-    cout << "1. This is a 3x3 Numerical Tic Tac Toe game" << endl;
-    cout << "2. Player 1 uses ODD numbers (1, 3, 5, 7, 9)" << endl;
-    cout << "3. Player 2 uses EVEN numbers (2, 4, 6, 8)" << endl;
-    cout << "4. Players take turns placing numbers on the board" << endl;
-    cout << "5. Each number can be used only once in the entire game" << endl;
-    cout << "6. The first player to get 3 numbers in a row (any row, column, or diagonal) that sum to 15 wins" << endl;
-    cout << "7. If all 9 cells are filled and no player has a sum of 15 the game ends in a draw" << endl;
-    cout << endl;
+    cout << "\n===== MAIN MENU =====\n";
+    cout << "1. Numerical Tic Tac Toe\n";
+    cout << "2. X-O Game\n";
+    cout << "3. SUS Game\n";
+    cout << "4. Exit\n";
+    cout << "Choose (1-4): ";
 }
 
 bool confirmExit() {
-    char choice;
-    cout << "Are you sure you want to exit? (Yes/No): " << endl;
-    cin >> choice;
-    return choice;
+    char c;
+    cout << "Are you sure you want to exit? (y/n): ";
+    cin >> c;
+    return (c == 'y' || c == 'Y');
 }
-/// sus game
+
 int getMenuChoice() {
     int choice;
     cin >> choice;
     return choice;
 }
-void playSUSGame() {
-    SUS_UI ui;
+
+
+// ===================== PLAY SOS GAME =====================
+void playSOSGame() {
+    SOS_UI ui;
 
     string name1, name2;
-    cout << "Enter name of Player 1 (S or U): ";
+    cout << "Enter Player 1 name (uses S): ";
     cin >> name1;
-    cout << "Enter name of Player 2 (S or U): ";
+
+    cout << "Enter Player 2 name (uses U): ";
     cin >> name2;
 
+    Player<char>* p1 = ui.create_player(name1, 'S', PlayerType::HUMAN);
+    Player<char>* p2 = ui.create_player(name2, 'U', PlayerType::HUMAN);
 
-    Player<char>* player1 = ui.create_player(name1, 'S', PlayerType::HUMAN);
-    Player<char>* player2 = ui.create_player(name2, 'U', PlayerType::HUMAN);
+    Player<char>* players[2] = { p1, p2 };
 
-    Player<char>* players[2] = { player1, player2 };
-
-    SUS_Board board;
-
+    SOS_Board board;
     GameManager<char> game(&board, players, &ui);
+
     game.run();
 
+    cout << "\nGame Over!\n";
 
-    int score1 = board.count_sequences(player1->get_symbol());
-    int score2 = board.count_sequences(player2->get_symbol());
-
-    cout << player1->get_name() << " score: " << score1 << endl;
-    cout << player2->get_name() << " score: " << score2 << endl;
-
-    if (score1 > score2) cout << player1->get_name() << " wins!" << endl;
-    else if (score2 > score1) cout << player2->get_name() << " wins!" << endl;
-    else cout << "It's a draw!" << endl;
-
-    delete player1;
-    delete player2;
+    delete p1;
+    delete p2;
 }
-///end sus game
+
+//
+// =========================
+// Numerical TicTacToe
+// =========================
+//
+
 void playNumericalGame() {
     Numerical_UI ui;
 
+    cout << "\n=== Numerical Tic Tac Toe ===\n";
+
     string name1, name2;
-    cout << "Enter name of Player 1 (odd numbers): ";
+    cout << "Enter Player 1 name (odd numbers): ";
     cin >> name1;
-    cout << "Enter name of Player 2 (even numbers): ";
+
+    cout << "Enter Player 2 name (even numbers): ";
     cin >> name2;
 
-    Player<int>* player1 = ui.create_player(name1, 1, PlayerType::HUMAN);
-    Player<int>* player2 = ui.create_player(name2, 2, PlayerType::HUMAN);
+    Player<int>* p1 = ui.create_player(name1, 1, PlayerType::HUMAN);
+    Player<int>* p2 = ui.create_player(name2, 2, PlayerType::HUMAN);
 
-    Player<int>* players[2] = { player1, player2 };
+    Player<int>* players[2] = { p1, p2 };
 
     Numerical_Board board;
-
     GameManager<int> game(&board, players, &ui);
+
     game.run();
 
-    if (board.is_win(player1)) {
-        cout << player1->get_name() << " wins" << endl;
-    }
-    else if (board.is_win(player2)) {
-        cout << player2->get_name() << " wins" << endl;
-    }
-    else {
-        cout << "It's a draw" << endl;
-    }
+    if (board.is_win(p1))
+        cout << p1->get_name() << " wins!\n";
+    else if (board.is_win(p2))
+        cout << p2->get_name() << " wins!\n";
+    else
+        cout << "It's a Draw!\n";
 
-    cout << "Game Over" << endl;
-
+    delete p1;
+    delete p2;
 }
+
+//
+// =========================
+// XO Game
+// =========================
+//
+
+void playXOGame() {
+    XO_UI ui;
+
+    cout << "\n=== X-O Game ===\n";
+
+    string name1, name2;
+    cout << "Enter Player 1 name (X): ";
+    cin >> name1;
+
+    cout << "Enter Player 2 name (O): ";
+    cin >> name2;
+
+    Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
+    Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
+
+    Player<char>* players[2] = { p1, p2 };
+
+    Xo_Board board;
+    GameManager<char> game(&board, players, &ui);
+
+    game.run();
+
+    delete p1;
+    delete p2;
+}
+
+//
+// =========================
+// MAIN
+// =========================
+//
 
 int main() {
     int choice;
@@ -116,26 +144,27 @@ int main() {
         choice = getMenuChoice();
 
         switch (choice) {
-            case 1:
-                playNumericalGame();
-                break;
-            case 2:
-                // playXOGame(); 
-                break;
-            case 3:
-                playSUSGame();
-                break;
-            case 4:
-                if (confirmExit()) exitProgram = true;
-                break;
-            default:
-                cout << "Invalid choice" << endl;
-                break;
+        case 1:
+            playNumericalGame();
+            break;
+
+        case 2:
+            playXOGame();
+            break;
+
+        case 3:
+            playSOSGame();
+            break;
+
+        case 4:
+            if (confirmExit()) exitProgram = true;
+            break;
+
+        default:
+            cout << "Invalid choice!\n";
+            break;
         }
     }
 
     return 0;
-};
-
-
-// yarb
+}

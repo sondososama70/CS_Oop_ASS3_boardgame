@@ -55,8 +55,14 @@ build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj: CXX_COMPILER__CS_ASSIGNM
   OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
   OBJECT_FILE_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
 
-build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/sus.cpp.obj: CXX_COMPILER__CS_ASSIGNMENT2_SOUND_unscanned_Debug D$:/GitHub$ Repo/sounds/CS_ASSIGNMENT2_SOUND/sus.cpp || cmake_object_order_depends_target_CS_ASSIGNMENT2_SOUND
-  DEP_FILE = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\sus.cpp.obj.d
+build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SOS_UI.cpp.obj: CXX_COMPILER__CS_ASSIGNMENT2_SOUND_unscanned_Debug D$:/GitHub$ Repo/sounds/CS_ASSIGNMENT2_SOUND/SOS_UI.cpp || cmake_object_order_depends_target_CS_ASSIGNMENT2_SOUND
+  DEP_FILE = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\SOS_UI.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
+  OBJECT_FILE_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
+
+build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SOS_Board.cpp.obj: CXX_COMPILER__CS_ASSIGNMENT2_SOUND_unscanned_Debug D$:/GitHub$ Repo/sounds/CS_ASSIGNMENT2_SOUND/SOS_Board.cpp || cmake_object_order_depends_target_CS_ASSIGNMENT2_SOUND
+  DEP_FILE = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\SOS_Board.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
   OBJECT_FILE_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
@@ -69,7 +75,7 @@ build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/sus.cpp.obj: CXX_COMPILER__CS_ASSIGNME
 #############################################
 # Link the executable CS_ASSIGNMENT2_SOUND.exe
 
-build CS_ASSIGNMENT2_SOUND.exe: CXX_EXECUTABLE_LINKER__CS_ASSIGNMENT2_SOUND_Debug CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/sus.cpp.obj
+build CS_ASSIGNMENT2_SOUND.exe: CXX_EXECUTABLE_LINKER__CS_ASSIGNMENT2_SOUND_Debug CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SOS_UI.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SOS_Board.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir

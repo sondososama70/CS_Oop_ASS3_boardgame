@@ -4,5 +4,7 @@ project(CS_ASSIGNMENT2_SOUND)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(CS_ASSIGNMENT2_SOUND main.cpp
-        SUS_BOARDGAME.cpp
-        SUS_BOARDGAME.h)
+        SOS_UI.h
+        SOS_Board.h
+        SOS_UI.cpp
+        SOS_Board.cpp)
