@@ -11,10 +11,9 @@ using namespace std;
 void displayMainMenu() {
     cout << "\n===== MAIN MENU =====\n";
     cout << "1. Numerical Tic Tac Toe\n";
-    cout << "2. X-O Game\n";
-    cout << "3. SUS Game\n";
-    cout << "4. Exit\n";
-    cout << "Choose (1-4): ";
+    cout << "2. SUS Game\n";
+    cout << "3. Exit\n";
+    cout << "Choose (1-3): ";
 }
 
 bool confirmExit() {
@@ -97,37 +96,6 @@ void playNumericalGame() {
     delete p2;
 }
 
-//
-// =========================
-// XO Game
-// =========================
-//
-
-// void playXOGame() {
-//     XO_UI ui;
-//
-//     cout << "\n=== X-O Game ===\n";
-//
-//     string name1, name2;
-//     cout << "Enter Player 1 name (X): ";
-//     cin >> name1;
-//
-//     cout << "Enter Player 2 name (O): ";
-//     cin >> name2;
-//
-//     Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
-//     Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
-//
-//     Player<char>* players[2] = { p1, p2 };
-//
-//     //Xo_Board board;
-//     GameManager<char> game(&board, players, &ui);
-//
-//     game.run();
-//
-//     delete p1;
-//     delete p2;
-// }
 
 //
 // =========================
@@ -147,9 +115,7 @@ int main() {
         case 1:
             playNumericalGame();
             break;
-
-
-
+            
         case 3:
             playSOSGame();
             break;
