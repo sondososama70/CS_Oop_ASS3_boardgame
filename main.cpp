@@ -103,31 +103,31 @@ void playNumericalGame() {
 // =========================
 //
 
-void playXOGame() {
-    XO_UI ui;
-
-    cout << "\n=== X-O Game ===\n";
-
-    string name1, name2;
-    cout << "Enter Player 1 name (X): ";
-    cin >> name1;
-
-    cout << "Enter Player 2 name (O): ";
-    cin >> name2;
-
-    Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
-    Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
-
-    Player<char>* players[2] = { p1, p2 };
-
-    Xo_Board board;
-    GameManager<char> game(&board, players, &ui);
-
-    game.run();
-
-    delete p1;
-    delete p2;
-}
+// void playXOGame() {
+//     XO_UI ui;
+//
+//     cout << "\n=== X-O Game ===\n";
+//
+//     string name1, name2;
+//     cout << "Enter Player 1 name (X): ";
+//     cin >> name1;
+//
+//     cout << "Enter Player 2 name (O): ";
+//     cin >> name2;
+//
+//     Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
+//     Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
+//
+//     Player<char>* players[2] = { p1, p2 };
+//
+//     //Xo_Board board;
+//     GameManager<char> game(&board, players, &ui);
+//
+//     game.run();
+//
+//     delete p1;
+//     delete p2;
+// }
 
 //
 // =========================
@@ -148,9 +148,7 @@ int main() {
             playNumericalGame();
             break;
 
-        case 2:
-            playXOGame();
-            break;
+
 
         case 3:
             playSOSGame();
