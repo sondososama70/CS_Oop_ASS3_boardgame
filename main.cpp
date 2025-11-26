@@ -9,10 +9,21 @@ using namespace std;
 
 void displayMainMenu() {
     cout << "\n===== MAIN MENU =====\n";
-    cout << "1. Numerical Tic Tac Toe\n";
-    cout << "2. SUS Game\n";
-    cout << "3. Exit\n";
-    cout << "Choose (1-3): ";
+    cout << "1. SUS Game\n";
+    cout << "2. Four in a row Game\n";
+    cout << "3. 5x5 Tic-Tac-Toe Game\n";
+    cout << "4. Word Tic-Tac-Toe Game\n";
+    cout << "5. Misère Tic-Tac-Toe Game\n";
+    cout << "6. Diamond Tic-Tac-Toe Game\n";
+    cout << "7. 4x4 Tic-Tac-Toe Game\n";
+    cout << "8. Pyramid Tic-Tac-Toe Game\n";
+    cout << "9. Numerical Tic-Tac-Toe Game\n";
+    cout << "10. Obstacles Tic-Tac-Toe Game\n";
+    cout << "11. Infinity Tic-Tac-Toe Game\n";
+    cout << "12. Ultimate Tic Tac Toe Game\n";
+    cout << "13.Memory Tic-Tac-Toe Game\n";
+    cout << "14. Exit\n";
+    cout << "Choose (1-14): ";
 }
 
 bool confirmExit() {
@@ -52,11 +63,8 @@ void playSUSGame() {
     delete p2;
 }
 
-//
-// =========================
-// Numerical TicTacToe
-// =========================
-//
+
+// =========================Numerical TicTacToe=========================//
 
 void playNumericalGame() {
     Numerical_UI ui;
@@ -92,11 +100,7 @@ void playNumericalGame() {
 }
 
 
-//
-// =========================
-// MAIN
-// =========================
-//
+//=====================MAIN======================//
 
 int main() {
     int choice;
