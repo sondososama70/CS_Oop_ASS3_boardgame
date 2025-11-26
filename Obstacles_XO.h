@@ -1,24 +1,25 @@
-#ifndef FIVEBYFIVE_H
-#define FIVEBYFIVE_H
+#ifndef OBSTACLES_XO_H
+#define OBSTACLES_XO_H
 #include "BoardGame_Classes.h"
 using namespace std;
 
-class FiveByFive : public Board<char> {
+class Obstacles_XO : public Board<char> {
 private:
-    char blank_symbol = '.'; ///< Character used to represent an empty cell on the board.
-    int count_sequences(char sym);
+    char blank_symbol = '.';
+
 public:
-    FiveByFive();
+    Obstacles_XO();
     bool update_board(Move<char>* move);
-    bool is_win(Player<char>* player);
-    bool is_lose(Player<char>*);
-    bool is_draw(Player<char>* player);
+    bool is_win(Player<char> *) override;
+    bool is_lose(Player<char> *) override;
+    bool is_draw(Player<char> *) override;
     bool game_is_over(Player<char>* player);
 };
-class FiveByFive_UI : public UI<char> {
+
+class Obstacles_XO_UI : public UI<char> {
 public:
-    FiveByFive_UI() : UI<char>("Welcome to 5x5 Tic-Tac-Toe", 5) {}
-    ~FiveByFive_UI() {}
+    Obstacles_XO_UI() : UI<char>("Welcome to Obstacles Tic-Tac-Toe", 6) {}
+    ~Obstacles_XO_UI() {}
 
     Player<char>* create_player(string& name, char symbol, PlayerType type) override {
         return new Player<char>(name, symbol, type);
@@ -40,4 +41,4 @@ public:
     }
 };
 
-#endif //FIVEBYFIVE_H
+#endif //OBSTACLES_XO_H

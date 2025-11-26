@@ -4,10 +4,11 @@
 #include "miser.h"
 #include "NUMERICALTICTACTOE.h"
 #include "fourxfourTicTacToe.h"
+#include "FiveByFive.h"
 
 using namespace std;
-
 template <typename T>
+
 void startGame(Board<T>* board, UI<T>* ui) {
     Player<T>** players = ui->setup_players();
     GameManager<T> game(board, players, ui);
@@ -105,8 +106,29 @@ void playSUSGame() {
     delete p2;
 }
 
-//=====================MAIN======================//
+// ===================== PLAY 5x5 TIC-TAC-TOE GAME =====================
+void playFiveByFiveGame() {
+    FiveByFive board;
+    FiveByFive_UI ui;
 
+    string name1, name2;
+    cout << "Enter Player 1 name (X): ";
+    cin >> name1;
+    cout << "Enter Player 2 name (O): ";
+    cin >> name2;
+
+    Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
+    Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
+    Player<char>* players[2] = {p1, p2};
+
+    GameManager<char> game(&board, players, &ui);
+    game.run();
+
+    delete p1;
+    delete p2;
+}
+
+//=====================MAIN======================//
 int main() {
     int choice;
     bool exitProgram = false;
@@ -115,36 +137,35 @@ int main() {
         displayMainMenu();
         choice = getMenuChoice();
 
-  switch (choice) {
+        switch (choice) {
              case 1:
-                 cout << "\nStarting SUS Tic Tac Toe...\n";
-                    playSUSGame() ;
+                 playSUSGame() ;
                  break;
              case 2:
                  // startGame(new FourInARow_Board(), new FourInARow_UI());
                  break;
              case 3:
-                 // startGame(new FiveByFive_Board(), new FiveByFive_UI());
+                 playFiveByFiveGame();
                  break;
              case 4:
                  // startGame(new Word_Board(), new Word_UI());
                  break;
              case 5:
                  cout << "\nStarting Misere Tic Tac Toe...\n";
-                 startGame(new miser(), new MiserUI()); // مثال صحيح
+                 startGame(new miser(), new MiserUI());
                  break;
              case 6:
                  // startGame(new Diamond_Board(), new Diamond_UI());
                  break;
              case 7:
-                  startGame(new FourxFour_Board(), new FourxFour_UI());
+                 startGame(new FourxFour_Board(), new FourxFour_UI());
                  break;
              case 8:
                  // startGame(new Pyramid_Board(), new Pyramid_UI());
                  break;
              case 9:
                  cout << "\nStarting Numerical Tic Tac Toe...\n";
-                 startGame(new NumericalBoard(), new NumericalUI()); // مثال صحيح
+                 startGame(new NumericalBoard(), new NumericalUI());
                  break;
              case 10:
                  // startGame(new Obstacles_Board(), new Obstacles_UI());
@@ -159,18 +180,16 @@ int main() {
                  // Bonus Game 2
                  break;
              case 14:
-                 cout << "\nGoodbye! Thanks for playing.\n";
+                 cout << "\nGoodbye, Thanks for playing.\n";
                  exitProgram = true;
                  break;
              default:
                  cout << "\nInvalid choice! Please choose a number between 1 and 14.\n";
                  break;
-         }
+        }
     }
-
     return 0;
-}
-
+};
 
 
 
