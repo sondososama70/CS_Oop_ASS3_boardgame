@@ -93,44 +93,6 @@ void playSUSGame() {
     delete p2;
 }
 
-
-
-// =========================Numerical TicTacToe=========================//
-
-void playNumericalGame() {
-    Numerical_UI ui;
-
-    cout << "\n=== Numerical Tic Tac Toe ===\n";
-
-    string name1, name2;
-    cout << "Enter Player 1 name (odd numbers): ";
-    cin >> name1;
-
-    cout << "Enter Player 2 name (even numbers): ";
-    cin >> name2;
-
-    Player<int>* p1 = ui.create_player(name1, 1, PlayerType::HUMAN);
-    Player<int>* p2 = ui.create_player(name2, 2, PlayerType::HUMAN);
-
-    Player<int>* players[2] = { p1, p2 };
-
-    Numerical_Board board;
-    GameManager<int> game(&board, players, &ui);
-
-    game.run();
-
-    if (board.is_win(p1))
-        cout << p1->get_name() << " wins!\n";
-    else if (board.is_win(p2))
-        cout << p2->get_name() << " wins!\n";
-    else
-        cout << "It's a Draw!\n";
-
-    delete p1;
-    delete p2;
-}
-
-
 //=====================MAIN======================//
 
 int main() {
@@ -145,7 +107,7 @@ int main() {
         case 2:
             playNumericalGame();
             break;
-            
+
         case 1:
             playSUSGame();
             break;
