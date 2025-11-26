@@ -38,7 +38,7 @@ bool Obstacles_XO::is_lose(Player<char> *) {
 bool Obstacles_XO::is_draw(Player<char> *) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
-            if (board[i][j] == '.')  
+            if (board[i][j] == '.')
                 return false;
         }
     }
