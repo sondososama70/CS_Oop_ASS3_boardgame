@@ -36,8 +36,19 @@ bool Obstacles_XO::is_lose(Player<char> *) {
 
 }
 bool Obstacles_XO::is_draw(Player<char> *) {
-
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (board[i][j] == '.')  
+                return false;
+        }
+    }
+    return !is_win(player);
 }
+
+
 bool Obstacles_XO::game_is_over(Player<char> *player) {
+    if (is_win(player))
+        return true;
+    return is_draw(player);
 
 }
