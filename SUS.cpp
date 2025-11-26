@@ -1,3 +1,4 @@
+
 #include "BoardGame_Classes.h"
 #include "SUS.h"
 #include <iostream>
@@ -8,6 +9,9 @@ using namespace std;
 SUS::SUS() : Board (3, 3) {
     score_p1 = 0;
     score_p2 = 0;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            board[i][j] = '.';
 }
 
 // --------------------------------------

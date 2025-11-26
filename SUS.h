@@ -5,19 +5,20 @@
 
 class SUS_UI : public UI<char> {
 public:
-    SUS_UI() : UI("Welcome to SUS Game!", 3) {}
+    SUS_UI() : UI("=== SUS Game ===", 3) {}
 
-    // Get move from user
-    Move<char>* get_move(Player<char>* player) override {
-        int r, c;
-        cout << player->get_name() << " (" << player->get_symbol() << ") enter move (row col): ";
-        cin >> r >> c;
-        return new Move<char>(r, c, player->get_symbol());
-    }
-
-    // Create player
+    // Create player (same style as XO or Numerical)
     Player<char>* create_player(string& name, char symbol, PlayerType type) override {
         return new Player<char>(name, symbol, type);
+    }
+
+    // Get move from player
+    Move<char>* get_move(Player<char>* player) override {
+        int r, c;
+        cout << player->get_name() << " (" << player->get_symbol()
+             << ") enter row and column: ";
+        cin >> r >> c;
+        return new Move<char>(r, c, player->get_symbol());
     }
 };
 

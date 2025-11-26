@@ -61,6 +61,12 @@ build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj: CXX_COMPILER__CS_ASSIGNME
   OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
   OBJECT_FILE_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
 
+build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj: CXX_COMPILER__CS_ASSIGNMENT2_SOUND_unscanned_Debug D$:/GitHub$ Repo/sounds/CS_ASSIGNMENT2_SOUND/FiveByFive.cpp || cmake_object_order_depends_target_CS_ASSIGNMENT2_SOUND
+  DEP_FILE = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\FiveByFive.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
+  OBJECT_FILE_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CS_ASSIGNMENT2_SOUND
@@ -69,7 +75,7 @@ build CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj: CXX_COMPILER__CS_ASSIGNME
 #############################################
 # Link the executable CS_ASSIGNMENT2_SOUND.exe
 
-build CS_ASSIGNMENT2_SOUND.exe: CXX_EXECUTABLE_LINKER__CS_ASSIGNMENT2_SOUND_Debug CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj
+build CS_ASSIGNMENT2_SOUND.exe: CXX_EXECUTABLE_LINKER__CS_ASSIGNMENT2_SOUND_Debug CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CS_ASSIGNMENT2_SOUND.dir

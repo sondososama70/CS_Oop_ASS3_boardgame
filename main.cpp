@@ -41,27 +41,58 @@ int getMenuChoice() {
 
 // ===================== PLAY SUS GAME =====================
 void playSUSGame() {
+    cout << "\n=== SUS GAME ===\n";
+
     SUS board;
     SUS_UI ui;
 
-    string n1, n2;
+    string name1, name2;
+    char sym1, sym2;
 
-    cout << "Enter Player 1 name (uses S): ";
-    cin >> n1;
-    cout << "Enter Player 2 name (uses U): ";
-    cin >> n2;
+    cout << "Enter Player 1 name: ";
+    cin >> name1;
 
-    Player<char>* p1 = new Player<char>(n1, 'S', PlayerType::HUMAN);
-    Player<char>* p2 = new Player<char>(n2, 'U', PlayerType::HUMAN);
+    cout << "Choose symbol for Player 1 (S or U): ";
+    cin >> sym1;
 
-    Player<char>* players[2] = { p1, p2 };
+    // Validate
+    while (sym1 != 'S' && sym1 != 'U' && sym1 != 's' && sym1 != 'u') {
+        cout << "Invalid! Choose S or U: ";
+        cin >> sym1;
+    }
+    sym1 = toupper(sym1);
+
+    // Player 2 automatically gets the other symbol
+    sym2 = (sym1 == 'S' ? 'U' : 'S');
+
+    cout << "Enter Player 2 name: ";
+    cin >> name2;
+
+    cout << name2 << " will use symbol: " << sym2 << "\n\n";
+
+    Player<char>* p1 = ui.create_player(name1, sym1, PlayerType::HUMAN);
+    Player<char>* p2 = ui.create_player(name2, sym2, PlayerType::HUMAN);
+
+    Player<char>* players[2];
+
+    // Player with S always starts first
+    if (sym1 == 'S') {
+        players[0] = p1;
+        players[1] = p2;
+    } else {
+        players[0] = p2;
+        players[1] = p1;
+    }
 
     GameManager<char> game(&board, players, &ui);
     game.run();
 
+    cout << "\n=== GAME OVER ===\n";
+
     delete p1;
     delete p2;
 }
+
 
 
 // =========================Numerical TicTacToe=========================//
@@ -111,11 +142,11 @@ int main() {
         choice = getMenuChoice();
 
         switch (choice) {
-        case 1:
+        case 2:
             playNumericalGame();
             break;
             
-        case 2:
+        case 1:
             playSUSGame();
             break;
 
