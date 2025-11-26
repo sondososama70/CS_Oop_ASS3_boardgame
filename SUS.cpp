@@ -26,9 +26,40 @@ bool SUS::update_board(Move<char>* move) {
     board[r][c] = move->get_symbol();
     n_moves++;
 
+    int new_sus = 0;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 1; j++) {
+            if (board[i][j] == 'S' &&
+                board[i][j+1] == 'U' &&
+                board[i][j+2] == 'S') {
+                new_sus++;
+                }
+        }
+    }
+
+    for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 1; i++) {
+            if (board[i][j] == 'S' &&
+                board[i+1][j] == 'U' &&
+                board[i+2][j] == 'S') {
+                new_sus++;
+                }
+        }
+    }
+
+    if (board[0][0] == 'S' && board[1][1] == 'U' && board[2][2] == 'S')
+        new_sus++;
+    if (board[0][2] == 'S' && board[1][1] == 'U' && board[2][0] == 'S')
+        new_sus++;
+
+    if (move->get_symbol() == 'S')
+        score_p1 = new_sus;
+    else
+        score_p2 = new_sus;
+
     return true;
 }
-
 // --------------------------------------
 // Count number of S-U-S found on board
 int SUS::count_SUS() {
@@ -62,10 +93,15 @@ int SUS::count_SUS() {
 
 // Win = who has highest SUS
 bool SUS::is_win(Player<char>* player) {
-    int sus_count = count_SUS();
-    if (player->get_symbol() == 'S')
-        return sus_count >= 1;
-    return false;
+    if (!game_is_over(player))
+        return false;
+
+    if (player->get_symbol() == 'S') {
+        return score_p1 > score_p2 ;
+    }
+    else {
+        return score_p2 > score_p1 ;
+    }
 }
 
 bool SUS::is_lose(Player<char>*) {
@@ -74,8 +110,10 @@ bool SUS::is_lose(Player<char>*) {
 
 // --------------------------------------
 bool SUS::is_draw(Player<char>*) {
-    return (n_moves == 9);
-}
+    return (n_moves == 9 && score_p1 == score_p2);
+    }
+
+
 
 // --------------------------------------
 bool SUS::game_is_over(Player<char>*) {
