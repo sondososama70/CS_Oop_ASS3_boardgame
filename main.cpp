@@ -2,8 +2,7 @@
 #include "BoardGame_Classes.h"
 #include "XO_Board.h"
 #include "XO_UI.h"
-#include "SOS_Board.h"
-#include "SOS_UI.h"
+#include "SUS.h"
 #include "XO_Classes.h"
 
 using namespace std;
@@ -30,28 +29,25 @@ int getMenuChoice() {
 }
 
 
-// ===================== PLAY SOS GAME =====================
-void playSOSGame() {
-    SOS_UI ui;
+// ===================== PLAY SUS GAME =====================
+void playSUSGame() {
+    SUS board;
+    SUS_UI ui;
 
-    string name1, name2;
+    string n1, n2;
+
     cout << "Enter Player 1 name (uses S): ";
-    cin >> name1;
-
+    cin >> n1;
     cout << "Enter Player 2 name (uses U): ";
-    cin >> name2;
+    cin >> n2;
 
-    Player<char>* p1 = ui.create_player(name1, 'S', PlayerType::HUMAN);
-    Player<char>* p2 = ui.create_player(name2, 'U', PlayerType::HUMAN);
+    Player<char>* p1 = new Player<char>(n1, 'S', PlayerType::HUMAN);
+    Player<char>* p2 = new Player<char>(n2, 'U', PlayerType::HUMAN);
 
     Player<char>* players[2] = { p1, p2 };
 
-    SOS_Board board;
     GameManager<char> game(&board, players, &ui);
-
     game.run();
-
-    cout << "\nGame Over!\n";
 
     delete p1;
     delete p2;
@@ -116,11 +112,11 @@ int main() {
             playNumericalGame();
             break;
             
-        case 3:
-            playSOSGame();
+        case 2:
+            playSUSGame();
             break;
 
-        case 4:
+        case 3:
             if (confirmExit()) exitProgram = true;
             break;
 
