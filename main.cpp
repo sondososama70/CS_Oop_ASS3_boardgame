@@ -28,7 +28,6 @@ int getMenuChoice() {
     return choice;
 }
 
-
 // ===================== PLAY SUS GAME =====================
 void playSUSGame() {
     SUS board;
