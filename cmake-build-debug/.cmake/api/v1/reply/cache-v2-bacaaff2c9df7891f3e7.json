@@ -2,6 +2,78 @@
 	"entries" : 
 	[
 		{
+			"name" : "Ass3_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug"
+		},
+		{
+			"name" : "Ass3_BoardGames_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug"
+		},
+		{
+			"name" : "Ass3_BoardGames_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Ass3_BoardGames_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/CS_Oop_ASS3_boardgame"
+		},
+		{
+			"name" : "Ass3_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Ass3_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "D:/CS_Oop_ASS3_boardgame"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -15,7 +87,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/addr2line.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +103,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -55,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug"
+			"value" : "d:/CS_Oop_ASS3_boardgame/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -115,7 +187,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/cmake/win/x64/bin/cmake.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/cmake/win/x64/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -127,7 +199,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/cmake/win/x64/bin/cpack.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/cmake/win/x64/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -139,7 +211,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/cmake/win/x64/bin/ctest.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/cmake/win/x64/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -155,7 +227,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/g++.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/g++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -171,7 +243,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/gcc-ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -187,7 +259,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/gcc-ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -299,7 +371,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/gcc.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -315,7 +387,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/gcc-ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -331,7 +403,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/gcc-ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -443,7 +515,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/dlltool.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -538,38 +610,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_EXPORT_BUILD_DATABASE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable/Disable output of build database during the build."
-				}
-			],
-			"type" : "BOOL",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable/Disable output of compile commands during generation."
-				}
-			],
-			"type" : "BOOL",
-			"value" : ""
-		},
-		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
 			"properties" : 
 			[
@@ -591,7 +631,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +643,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Ninja"
+			"value" : "MinGW Makefiles"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -663,7 +703,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND"
+			"value" : "D:/CS_Oop_ASS3_boardgame"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -691,19 +731,23 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/ld.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
 					"value" : "make program"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/ninja/win/x64/ninja.exe"
+			"value" : "C:/PROGRA~1/JETBRA~1/CLION2~1.1/bin/mingw/bin/mingw32-make.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -799,7 +843,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/nm.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -827,7 +871,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/objcopy.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -843,7 +887,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/objdump.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -891,7 +935,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "CS_ASSIGNMENT2_SOUND"
+			"value" : "Ass3_BoardGames"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -907,7 +951,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -923,7 +967,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/windres.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -1031,7 +1075,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/readelf.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -1043,7 +1087,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/cmake/win/x64/share/cmake-3.31"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/cmake/win/x64/share/cmake-3.31"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1251,7 +1295,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2025.1/bin/mingw/bin/strip.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2025.1.1/bin/mingw/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_TAPI",
@@ -1295,7 +1339,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug"
+			"value" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug"
 		},
 		{
 			"name" : "CS_ASSIGNMENT2_SOUND_IS_TOP_LEVEL",
@@ -1319,7 +1363,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND"
+			"value" : "D:/CS_Oop_ASS3_boardgame"
 		},
 		{
 			"name" : "_CMAKE_CXX_LINKER_PUSHPOP_STATE_SUPPORTED",
