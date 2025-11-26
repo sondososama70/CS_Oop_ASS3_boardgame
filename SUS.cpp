@@ -23,43 +23,24 @@ bool SUS::update_board(Move<char>* move) {
     if (board[r][c] != '.')
         return false;
 
+    int before = count_SUS();
+
     board[r][c] = move->get_symbol();
     n_moves++;
 
-    int new_sus = 0;
-
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 1; j++) {
-            if (board[i][j] == 'S' &&
-                board[i][j+1] == 'U' &&
-                board[i][j+2] == 'S') {
-                new_sus++;
-                }
-        }
+    int after = count_SUS();
+    int delta = after - before;
+    if (delta > 0) {
+        if (move->get_symbol() == 'S')
+            score_p1 += delta;
+        else
+            score_p2 += delta;
     }
-
-    for (int j = 0; j < 3; j++) {
-        for (int i = 0; i < 1; i++) {
-            if (board[i][j] == 'S' &&
-                board[i+1][j] == 'U' &&
-                board[i+2][j] == 'S') {
-                new_sus++;
-                }
-        }
-    }
-
-    if (board[0][0] == 'S' && board[1][1] == 'U' && board[2][2] == 'S')
-        new_sus++;
-    if (board[0][2] == 'S' && board[1][1] == 'U' && board[2][0] == 'S')
-        new_sus++;
-
-    if (move->get_symbol() == 'S')
-        score_p1 = new_sus;
-    else
-        score_p2 = new_sus;
 
     return true;
 }
+
+
 // --------------------------------------
 // Count number of S-U-S found on board
 int SUS::count_SUS() {
