@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2025.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2025.1/bin/ninja/win/x64/ninja.exe" -G Ninja -S "D:\GitHub Repo\sounds\CS_ASSIGNMENT2_SOUND" -B "D:\GitHub Repo\sounds\CS_ASSIGNMENT2_SOUND\cmake-build-debug"
--- Configuring done (0.3s)
+"C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S D:\CS_Oop_ASS3_boardgame -B D:\CS_Oop_ASS3_boardgame\cmake-build-debug
+-- Configuring done (0.2s)
 -- Generating done (0.1s)
--- Build files have been written to: D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug
+-- Build files have been written to: D:/CS_Oop_ASS3_boardgame/cmake-build-debug

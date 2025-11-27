@@ -8,54 +8,55 @@ FiveByFive::FiveByFive() : Board(5, 5) {
         }
     }
 }
+
 bool FiveByFive::update_board(Move<char> *move) {
     int x = move->get_x();
     int y = move->get_y();
     char mark = move->get_symbol();
 
     if (!(x < 0 || x >= rows || y < 0 || y >= columns) &&
-        (board[x][y] == blank_symbol || mark == 0)) {
+        (board[x][y] == blank_symbol)) {
 
-        if (mark == 0) { // Undo move
-            n_moves--;
-            board[x][y] = blank_symbol;
-        }
-        else {         // Apply move
-            n_moves++;
-            board[x][y] = toupper(mark);
-        }
+        n_moves++;
+        board[x][y] = toupper(mark);
         return true;
-        }
-    return false;
-}
-
-bool FiveByFive::is_win(Player<char> *player) {
-    const char sym = player->get_symbol();
-    int win_count = 0;
-
-    // Only determine win after all moves are completed
-    if (n_moves == 24) {
-        // Count sequences for both players to determine winner
-        char other_sym = (sym == 'X') ? 'O' : 'X';
-        int other_count = count_sequences(other_sym);
-
-        return win_count > other_count;
     }
     return false;
 }
 
-bool FiveByFive::is_lose(Player<char>*) {
-    return false;
+bool FiveByFive::is_win(Player<char> *player) {
+    // Only determine win after all moves are completed
+    if (n_moves < 24) return false;
+
+    const char sym = player->get_symbol();
+    const char other_sym = (sym == 'X') ? 'O' : 'X';
+
+    int player_sequences = count_sequences(sym);
+    int opponent_sequences = count_sequences(other_sym);
+
+    return player_sequences > opponent_sequences;
+}
+
+bool FiveByFive::is_lose(Player<char> *player) {
+    // Only determine lose after all moves are completed
+    if (n_moves < 24) return false;
+
+    const char sym = player->get_symbol();
+    const char other_sym = (sym == 'X') ? 'O' : 'X';
+
+    int player_sequences = count_sequences(sym);
+    int opponent_sequences = count_sequences(other_sym);
+
+    return player_sequences < opponent_sequences;
 }
 
 bool FiveByFive::is_draw(Player<char> *player) {
+    // Game is a draw when all cells are filled and sequences are equal
     if (n_moves == 24) {
-        const char sym1 = 'X';
-        const char sym2 = 'O';
-        int count1 = count_sequences(sym1);
-        int count2 = count_sequences(sym2);
+        int x_sequences = count_sequences('X');
+        int o_sequences = count_sequences('O');
 
-        return count1 == count2;
+        return x_sequences == o_sequences;
     }
     return false;
 }
@@ -68,7 +69,7 @@ bool FiveByFive::game_is_over(Player<char> *player) {
 int FiveByFive::count_sequences(char sym) {
     int count = 0;
 
-    // Check rows
+    // Check horizontal sequences
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j <= columns - 3; ++j) {
             if (board[i][j] == sym && board[i][j+1] == sym && board[i][j+2] == sym) {
@@ -76,7 +77,8 @@ int FiveByFive::count_sequences(char sym) {
             }
         }
     }
-    // Check columns
+
+    // Check vertical sequences
     for (int j = 0; j < columns; ++j) {
         for (int i = 0; i <= rows - 3; ++i) {
             if (board[i][j] == sym && board[i+1][j] == sym && board[i+2][j] == sym) {
@@ -84,7 +86,8 @@ int FiveByFive::count_sequences(char sym) {
             }
         }
     }
-    // Check diagonals
+
+    // Check diagonal sequences (top-left to bottom-right)
     for (int i = 0; i <= rows - 3; ++i) {
         for (int j = 0; j <= columns - 3; ++j) {
             if (board[i][j] == sym && board[i+1][j+1] == sym && board[i+2][j+2] == sym) {
@@ -92,7 +95,8 @@ int FiveByFive::count_sequences(char sym) {
             }
         }
     }
-    // Check anti-diagonals
+
+    // Check anti-diagonal sequences (top-right to bottom-left)
     for (int i = 0; i <= rows - 3; ++i) {
         for (int j = 2; j < columns; ++j) {
             if (board[i][j] == sym && board[i+1][j-1] == sym && board[i+2][j-2] == sym) {
@@ -102,4 +106,3 @@ int FiveByFive::count_sequences(char sym) {
     }
     return count;
 }
-
