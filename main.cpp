@@ -5,6 +5,7 @@
 #include "NUMERICALTICTACTOE.h"
 #include "fourxfourTicTacToe.h"
 #include "FiveByFive.h"
+#include "Obstacles_XO.h"
 
 using namespace std;
 template <typename T>
@@ -168,7 +169,7 @@ int main() {
                  startGame(new NumericalBoard(), new NumericalUI());
                  break;
              case 10:
-                 // startGame(new Obstacles_Board(), new Obstacles_UI());
+                 startGame(new Obstacles_XO(), new Obstacles_XO_UI());
                  break;
              case 11:
                  // startGame(new Infinity_Board(), new Infinity_UI());

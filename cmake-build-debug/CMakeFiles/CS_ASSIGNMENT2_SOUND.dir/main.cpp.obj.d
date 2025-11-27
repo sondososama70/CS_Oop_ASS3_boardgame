@@ -178,4 +178,7 @@ CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2025.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multiset.h \
  C:/Program\ Files/JetBrains/CLion\ 2025.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
  D:\CS_Oop_ASS3_boardgame\fourxfourTicTacToe.h \
- D:\CS_Oop_ASS3_boardgame\FiveByFive.h
+ D:\CS_Oop_ASS3_boardgame\FiveByFive.h \
+ D:\CS_Oop_ASS3_boardgame\Obstacles_XO.h \
+ C:/Program\ Files/JetBrains/CLion\ 2025.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/utility \
+ C:/Program\ Files/JetBrains/CLion\ 2025.1.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_relops.h
