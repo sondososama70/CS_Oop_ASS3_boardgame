@@ -37,6 +37,7 @@ using namespace std;
 
 Obstacles_XO::Obstacles_XO() : Board(6, 6) {
     srand(time(0)); // Seed random number generator
+    n_moves = 0;
     for (auto& row : board) {
         for (auto& cell : row) {
             cell = blank_symbol;
@@ -72,6 +73,12 @@ bool Obstacles_XO::update_board(Move<char>* move) {
     // Apply move
     n_moves++;
     board[x][y] = toupper(mark);
+
+    if (n_moves % 2 == 0 && n_moves != 0) {
+        add_obstacles();
+    }
+
+
     return true;
 }
 
@@ -83,7 +90,6 @@ void Obstacles_XO::add_obstacles() {
         int x = rand() % 6;
         int y = rand() % 6;
 
-        // Only add obstacle if cell is empty
         if (board[x][y] == blank_symbol) {
             board[x][y] = obstacle_symbol;
             obstacles.push_back({x, y});
@@ -96,26 +102,28 @@ void Obstacles_XO::add_obstacles() {
 bool Obstacles_XO::is_win(Player<char> *player) {
     const char sym = player->get_symbol();
     auto all_equal = [&](char a, char b, char c , char d) {
-        return a == b && b == c && c==d && a != blank_symbol;
+        return (a == b && b == c && c == d && a == sym);
     };
-
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 3; j++) {
-            if ((all_equal(board[i][j], board[i][j+1], board[i][j+2],board[i][j+3]) && board[i][j] == sym) ||
-            (all_equal(board[i][j], board[i+1][j], board[i+2][j],board[i+3][j]) && board[i][j] == sym))
-                return true;
+            if (all_equal(board[i][j], board[i][j+1], board[i][j+2], board[i][j+3])) return true;
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 6; j++) {
+            if (all_equal(board[i][j], board[i+1][j], board[i+2][j], board[i+3][j])) return true;
         }
     }
     for (int i=0;i<3;i++) {
         for (int j=0;j<3;j++) {
-            if (all_equal(board[i][j],board[i+1][j+1],board[i+2][j+2],board[i+3][j+3]) && board[i][j] == sym) {
+            if (all_equal(board[i][j],board[i+1][j+1],board[i+2][j+2],board[i+3][j+3]) ) {
                 return true;
             }
         }
     }
     for (int i=0;i<3;i++) {
         for (int j=3;j<6;j++) {
-            if (all_equal(board[i][j],board[i+1][j-1],board[i+2][j-2],board[i+3][j-3]) && board[i][j] == sym) {
+            if (all_equal(board[i][j],board[i+1][j-1],board[i+2][j-2],board[i+3][j-3])) {
                 return true;
             }
         }
