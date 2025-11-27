@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND/cmake-build-debug",
-		"source" : "D:/GitHub Repo/sounds/CS_ASSIGNMENT2_SOUND"
+		"build" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug",
+		"source" : "D:/CS_Oop_ASS3_boardgame"
 	},
 	"version" : 
 	{

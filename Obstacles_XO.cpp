@@ -43,10 +43,6 @@ Obstacles_XO::Obstacles_XO() : Board(6, 6) {
             cell = blank_symbol;
         }
     }
-
-    // Add initial obstacles
-    add_obstacles();
-    add_obstacles();
 }
 
 bool Obstacles_XO::update_board(Move<char>* move) {
