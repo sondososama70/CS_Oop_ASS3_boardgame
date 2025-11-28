@@ -6,6 +6,7 @@
 #include "fourxfourTicTacToe.h"
 #include "FiveByFive.h"
 #include "Obstacles_XO.h"
+#include "Word_TicTacToe.h"
 
 using namespace std;
 template <typename T>
@@ -129,6 +130,8 @@ void playFiveByFiveGame() {
     delete p2;
 }
 
+
+
 //=====================MAIN======================//
 int main() {
     int choice;
@@ -149,8 +152,8 @@ int main() {
                  playFiveByFiveGame();
                  break;
              case 4:
-                 // startGame(new Word_Board(), new Word_UI());
-                 break;
+                startGame(new Word_TicTacToe() , new Word_TicTacToe_UI());
+                break;
              case 5:
                  cout << "\nStarting Misere Tic Tac Toe...\n";
                  startGame(new miser(), new MiserUI());

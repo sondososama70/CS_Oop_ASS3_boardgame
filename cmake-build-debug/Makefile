@@ -231,6 +231,30 @@ SUS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.s
 .PHONY : SUS.cpp.s
 
+Word_TicTacToe.obj: Word_TicTacToe.cpp.obj
+.PHONY : Word_TicTacToe.obj
+
+# target to build an object file
+Word_TicTacToe.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Word_TicTacToe.cpp.obj
+.PHONY : Word_TicTacToe.cpp.obj
+
+Word_TicTacToe.i: Word_TicTacToe.cpp.i
+.PHONY : Word_TicTacToe.i
+
+# target to preprocess a source file
+Word_TicTacToe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Word_TicTacToe.cpp.i
+.PHONY : Word_TicTacToe.cpp.i
+
+Word_TicTacToe.s: Word_TicTacToe.cpp.s
+.PHONY : Word_TicTacToe.s
+
+# target to generate assembly for a file
+Word_TicTacToe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Word_TicTacToe.cpp.s
+.PHONY : Word_TicTacToe.cpp.s
+
 fourxfourTicTacToe.obj: fourxfourTicTacToe.cpp.obj
 .PHONY : fourxfourTicTacToe.obj
 
@@ -325,6 +349,9 @@ help:
 	@echo ... SUS.obj
 	@echo ... SUS.i
 	@echo ... SUS.s
+	@echo ... Word_TicTacToe.obj
+	@echo ... Word_TicTacToe.i
+	@echo ... Word_TicTacToe.s
 	@echo ... fourxfourTicTacToe.obj
 	@echo ... fourxfourTicTacToe.i
 	@echo ... fourxfourTicTacToe.s
