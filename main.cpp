@@ -114,13 +114,37 @@ void playFiveByFiveGame() {
     FiveByFive_UI ui;
 
     string name1, name2;
+    int choice1 , choice2;
+    PlayerType type1 , type2;
+
+    //Player 1:
     cout << "Enter Player 1 name (X): ";
     cin >> name1;
+    cout << "Choose Player 1 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice1;
+
+    while (choice1 < 1 || choice1 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice1;
+    }
+    type1 = (choice1 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+    //Player 2:
     cout << "Enter Player 2 name (O): ";
     cin >> name2;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice2;
 
-    Player<char>* p1 = ui.create_player(name1, 'X', PlayerType::HUMAN);
-    Player<char>* p2 = ui.create_player(name2, 'O', PlayerType::HUMAN);
+    while (choice2 < 1 || choice2 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice2;
+    }
+    type2 = (choice2 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+    Player<char>* p1 = ui.create_player(name1, 'X', type1);
+    Player<char>* p2 = ui.create_player(name2, 'O', type2);
     Player<char>* players[2] = {p1, p2};
 
     GameManager<char> game(&board, players, &ui);
@@ -136,14 +160,37 @@ void playWordTicTacToeGame() {
     Word_TicTacToe_UI ui;
 
     string name1, name2;
+    int choice1, choice2;
+    PlayerType type1, type2;
 
+    //Player 1:
     cout << "Enter Player 1 name: ";
     cin >> name1;
+    cout << "Choose Player 1 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice1;
+
+    while (choice1 < 1 || choice1 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice1;
+    }
+    type1 = (choice1 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+    //Player 2:
     cout << "Enter Player 2 name: ";
     cin >> name2;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice2;
 
-    Player<char>* p1 = ui.create_player(name1, ' ', PlayerType::HUMAN);
-    Player<char>* p2 = ui.create_player(name2, ' ', PlayerType::HUMAN);
+    while (choice2 < 1 || choice2 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice2;
+    }
+    type2 = (choice2 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+    Player<char>* p1 = ui.create_player(name1, ' ', type1);
+    Player<char>* p2 = ui.create_player(name2, ' ', type2);
 
     Player<char>* players[2] = {p1, p2};
 
@@ -210,7 +257,7 @@ int main() {
                  exitProgram = true;
                  break;
              default:
-                 cout << "\nInvalid choice! Please choose a number between 1 and 14.\n";
+                 cout << "\nInvalid choice , Please choose a number between 1 and 14.\n";
                  break;
         }
     }

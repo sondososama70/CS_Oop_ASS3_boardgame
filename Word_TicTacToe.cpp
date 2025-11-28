@@ -49,7 +49,6 @@ Word_TicTacToe::Word_TicTacToe() : Board(3 , 3){
             cell = blank_symbol;
         }
     }
-    //Load the dictionary when the board is created
     load_dictionary();
 }
 
@@ -154,8 +153,8 @@ Move<char>* Word_TicTacToe_UI::get_move(Player<char>* player) {
     char letter;
 
     if (player->get_type() == PlayerType::HUMAN) {
-        cout << player->get_name() << ", enter row and column (0-2): ";
-        cin >> row >> column;
+        cout << player->get_name() << ", enter row , column and letter: ";
+        cin >> row >> column >> letter;
 
         // Input validation for coordinates
         while (row < 0 || row > 2 || column < 0 || column > 2) {
@@ -163,8 +162,10 @@ Move<char>* Word_TicTacToe_UI::get_move(Player<char>* player) {
             cin >> row >> column;
         }
 
-        cout << "Enter a letter (A-Z): ";
-        cin >> letter;
+        while (!isalpha(letter)) {
+            cout << "Please enter a letter (A-Z): ";
+            cin >> letter;
+        }
         letter = toupper(letter);
     }
     else if (player->get_type() == PlayerType::COMPUTER) {
