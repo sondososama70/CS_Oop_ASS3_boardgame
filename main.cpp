@@ -130,7 +130,29 @@ void playFiveByFiveGame() {
     delete p2;
 }
 
+// ===================== PLAY Word TIC-TAC-TOE GAME =====================
+void playWordTicTacToeGame() {
+    Word_TicTacToe board;
+    Word_TicTacToe_UI ui;
 
+    string name1, name2;
+
+    cout << "Enter Player 1 name: ";
+    cin >> name1;
+    cout << "Enter Player 2 name: ";
+    cin >> name2;
+
+    Player<char>* p1 = ui.create_player(name1, ' ', PlayerType::HUMAN);
+    Player<char>* p2 = ui.create_player(name2, ' ', PlayerType::HUMAN);
+
+    Player<char>* players[2] = {p1, p2};
+
+    GameManager<char> game(&board, players, &ui);
+    game.run();
+
+    delete p1;
+    delete p2;
+}
 
 //=====================MAIN======================//
 int main() {
@@ -152,7 +174,7 @@ int main() {
                  playFiveByFiveGame();
                  break;
              case 4:
-                startGame(new Word_TicTacToe() , new Word_TicTacToe_UI());
+                playWordTicTacToeGame();
                 break;
              case 5:
                  cout << "\nStarting Misere Tic Tac Toe...\n";
