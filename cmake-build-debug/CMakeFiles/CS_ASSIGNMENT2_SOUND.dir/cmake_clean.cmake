@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/main.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/miser.cpp.obj"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/miser.cpp.obj.d"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/pyramidTicTacToe.cpp.obj"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/pyramidTicTacToe.cpp.obj.d"
   "CS_ASSIGNMENT2_SOUND.exe"
   "CS_ASSIGNMENT2_SOUND.exe.manifest"
   "CS_ASSIGNMENT2_SOUND.pdb"

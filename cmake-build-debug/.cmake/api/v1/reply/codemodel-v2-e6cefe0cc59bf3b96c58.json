@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "CS_ASSIGNMENT2_SOUND::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-CS_ASSIGNMENT2_SOUND-Debug-f91924dcb10178b43075.json",
+					"jsonFile" : "target-CS_ASSIGNMENT2_SOUND-Debug-59a9c6fe36c85b06d882.json",
 					"name" : "CS_ASSIGNMENT2_SOUND",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/CS_Oop_ASS3_boardgame/cmake-build-debug",
-		"source" : "D:/CS_Oop_ASS3_boardgame"
+		"build" : "C:/Users/HP/OneDrive/Documents/GitHub/CS_Oop_ASS3_boardgame/cmake-build-debug",
+		"source" : "C:/Users/HP/OneDrive/Documents/GitHub/CS_Oop_ASS3_boardgame"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 8
 	}
 }

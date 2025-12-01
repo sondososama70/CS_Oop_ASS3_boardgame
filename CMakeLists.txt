@@ -19,4 +19,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         Ultimate_XO.h
         Memory_XO.cpp
         Memory_XO.h
+        pyramidTicTacToe.cpp
+        pyramidTicTacToe.h
 )
