@@ -15,4 +15,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         Word_TicTacToe.h
         Infinity_XO.cpp
         Infinity_XO.h
+        Ultimate_XO.cpp
+        Ultimate_XO.h
 )

@@ -255,6 +255,30 @@ SUS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.s
 .PHONY : SUS.cpp.s
 
+Ultimate_XO.obj: Ultimate_XO.cpp.obj
+.PHONY : Ultimate_XO.obj
+
+# target to build an object file
+Ultimate_XO.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Ultimate_XO.cpp.obj
+.PHONY : Ultimate_XO.cpp.obj
+
+Ultimate_XO.i: Ultimate_XO.cpp.i
+.PHONY : Ultimate_XO.i
+
+# target to preprocess a source file
+Ultimate_XO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Ultimate_XO.cpp.i
+.PHONY : Ultimate_XO.cpp.i
+
+Ultimate_XO.s: Ultimate_XO.cpp.s
+.PHONY : Ultimate_XO.s
+
+# target to generate assembly for a file
+Ultimate_XO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Ultimate_XO.cpp.s
+.PHONY : Ultimate_XO.cpp.s
+
 Word_TicTacToe.obj: Word_TicTacToe.cpp.obj
 .PHONY : Word_TicTacToe.obj
 
@@ -376,6 +400,9 @@ help:
 	@echo ... SUS.obj
 	@echo ... SUS.i
 	@echo ... SUS.s
+	@echo ... Ultimate_XO.obj
+	@echo ... Ultimate_XO.i
+	@echo ... Ultimate_XO.s
 	@echo ... Word_TicTacToe.obj
 	@echo ... Word_TicTacToe.i
 	@echo ... Word_TicTacToe.s

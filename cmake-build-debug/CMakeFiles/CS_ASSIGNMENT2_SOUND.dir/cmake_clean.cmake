@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Obstacles_XO.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj.d"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Ultimate_XO.cpp.obj"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Ultimate_XO.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Word_TicTacToe.cpp.obj"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Word_TicTacToe.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/fourxfourTicTacToe.cpp.obj"
