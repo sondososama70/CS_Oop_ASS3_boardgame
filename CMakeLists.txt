@@ -17,4 +17,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         Infinity_XO.h
         Ultimate_XO.cpp
         Ultimate_XO.h
+        Memory_XO.cpp
+        Memory_XO.h
 )

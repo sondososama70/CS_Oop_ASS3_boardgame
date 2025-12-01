@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/CS_Oop_ASS3_boardgame/FiveByFive.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj.d"
   "D:/CS_Oop_ASS3_boardgame/Infinity_XO.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.obj.d"
+  "D:/CS_Oop_ASS3_boardgame/Memory_XO.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Memory_XO.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Memory_XO.cpp.obj.d"
   "D:/CS_Oop_ASS3_boardgame/NUMERICALTICTACTOE.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/NUMERICALTICTACTOE.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/NUMERICALTICTACTOE.cpp.obj.d"
   "D:/CS_Oop_ASS3_boardgame/Obstacles_XO.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Obstacles_XO.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Obstacles_XO.cpp.obj.d"
   "D:/CS_Oop_ASS3_boardgame/SUS.cpp" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj" "gcc" "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/SUS.cpp.obj.d"

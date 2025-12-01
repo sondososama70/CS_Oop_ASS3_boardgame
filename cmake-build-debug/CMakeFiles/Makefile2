@@ -84,12 +84,12 @@ clean: CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/clean
 CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target CS_ASSIGNMENT2_SOUND"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target CS_ASSIGNMENT2_SOUND"
 .PHONY : CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/rule
@@ -101,7 +101,7 @@ CS_ASSIGNMENT2_SOUND: CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/rule
 # codegen rule for target.
 CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target CS_ASSIGNMENT2_SOUND"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\CS_Oop_ASS3_boardgame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Finished codegen for target CS_ASSIGNMENT2_SOUND"
 .PHONY : CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/codegen
 
 # clean rule for target.

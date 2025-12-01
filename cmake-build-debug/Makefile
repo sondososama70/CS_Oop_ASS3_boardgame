@@ -183,6 +183,30 @@ Infinity_XO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.s
 .PHONY : Infinity_XO.cpp.s
 
+Memory_XO.obj: Memory_XO.cpp.obj
+.PHONY : Memory_XO.obj
+
+# target to build an object file
+Memory_XO.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Memory_XO.cpp.obj
+.PHONY : Memory_XO.cpp.obj
+
+Memory_XO.i: Memory_XO.cpp.i
+.PHONY : Memory_XO.i
+
+# target to preprocess a source file
+Memory_XO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Memory_XO.cpp.i
+.PHONY : Memory_XO.cpp.i
+
+Memory_XO.s: Memory_XO.cpp.s
+.PHONY : Memory_XO.s
+
+# target to generate assembly for a file
+Memory_XO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Memory_XO.cpp.s
+.PHONY : Memory_XO.cpp.s
+
 NUMERICALTICTACTOE.obj: NUMERICALTICTACTOE.cpp.obj
 .PHONY : NUMERICALTICTACTOE.obj
 
@@ -391,6 +415,9 @@ help:
 	@echo ... Infinity_XO.obj
 	@echo ... Infinity_XO.i
 	@echo ... Infinity_XO.s
+	@echo ... Memory_XO.obj
+	@echo ... Memory_XO.i
+	@echo ... Memory_XO.s
 	@echo ... NUMERICALTICTACTOE.obj
 	@echo ... NUMERICALTICTACTOE.i
 	@echo ... NUMERICALTICTACTOE.s
