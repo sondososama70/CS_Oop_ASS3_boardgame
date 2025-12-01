@@ -13,4 +13,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         Obstacles_XO.cpp
         Word_TicTacToe.cpp
         Word_TicTacToe.h
+        Infinity_XO.cpp
+        Infinity_XO.h
 )

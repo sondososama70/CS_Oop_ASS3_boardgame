@@ -159,6 +159,30 @@ FiveByFive.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.s
 .PHONY : FiveByFive.cpp.s
 
+Infinity_XO.obj: Infinity_XO.cpp.obj
+.PHONY : Infinity_XO.obj
+
+# target to build an object file
+Infinity_XO.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.obj
+.PHONY : Infinity_XO.cpp.obj
+
+Infinity_XO.i: Infinity_XO.cpp.i
+.PHONY : Infinity_XO.i
+
+# target to preprocess a source file
+Infinity_XO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.i
+.PHONY : Infinity_XO.cpp.i
+
+Infinity_XO.s: Infinity_XO.cpp.s
+.PHONY : Infinity_XO.s
+
+# target to generate assembly for a file
+Infinity_XO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.s
+.PHONY : Infinity_XO.cpp.s
+
 NUMERICALTICTACTOE.obj: NUMERICALTICTACTOE.cpp.obj
 .PHONY : NUMERICALTICTACTOE.obj
 
@@ -340,6 +364,9 @@ help:
 	@echo ... FiveByFive.obj
 	@echo ... FiveByFive.i
 	@echo ... FiveByFive.s
+	@echo ... Infinity_XO.obj
+	@echo ... Infinity_XO.i
+	@echo ... Infinity_XO.s
 	@echo ... NUMERICALTICTACTOE.obj
 	@echo ... NUMERICALTICTACTOE.i
 	@echo ... NUMERICALTICTACTOE.s

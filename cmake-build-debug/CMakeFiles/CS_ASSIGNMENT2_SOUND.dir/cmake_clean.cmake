@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/FiveByFive.cpp.obj.d"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.obj"
+  "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Infinity_XO.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/NUMERICALTICTACTOE.cpp.obj"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/NUMERICALTICTACTOE.cpp.obj.d"
   "CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Obstacles_XO.cpp.obj"

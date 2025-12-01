@@ -1,4 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2025.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S D:\CS_Oop_ASS3_boardgame -B D:\CS_Oop_ASS3_boardgame\cmake-build-debug
--- Configuring done (0.7s)
--- Generating done (0.2s)
+-- Configuring done (0.8s)
+-- Generating done (0.1s)
 -- Build files have been written to: D:/CS_Oop_ASS3_boardgame/cmake-build-debug
