@@ -33,20 +33,41 @@
 // }
 //
 // bool Infinity_XO::is_win(Player<char> *player) {
+//     const char sym = player->get_symbol();
 //
+//     auto all_equal = [&](char a, char b, char c) {
+//         return a == b && b == c && a != blank_symbol;
+//         };
+//
+//     // Check rows and columns
+//     for (int i = 0; i < rows; ++i) {
+//         if ((all_equal(board[i][0], board[i][1], board[i][2]) && board[i][0] == sym) ||
+//             (all_equal(board[0][i], board[1][i], board[2][i]) && board[0][i] == sym))
+//             return true;
+//     }
+//
+//     // Check diagonals
+//     if ((all_equal(board[0][0], board[1][1], board[2][2]) && board[1][1] == sym) ||
+//         (all_equal(board[0][2], board[1][1], board[2][0]) && board[1][1] == sym))
+//         return true;
+//
+//     return false;
 // }
 //
-// bool Infinity_XO::is_lose(Player<char> *) {
 //
-// }
 //
-// bool Infinity_XO::is_draw(Player<char> *player) {
-//
-// }
-//
-// bool Infinity_XO::game_is_over(Player<char> *player) {
-//
-// }
+// //
+// // bool Infinity_XO::is_lose(Player<char> *) {
+// //
+// // }
+// //
+// // bool Infinity_XO::is_draw(Player<char> *player) {
+// //
+// // }
+// //
+// // bool Infinity_XO::game_is_over(Player<char> *player) {
+// //
+// // }
 //
 // //UI implementation:
 // Infinity_XO_UI::Infinity_XO_UI() : UI<char>("Welcome to the Infinity XO Board" , 3) {}

@@ -10,9 +10,9 @@
 //     Infinity_XO();
 //     bool update_board(Move<char> *move);
 //     bool is_win(Player<char>* player);
-//     bool is_lose(Player<char>*);
-//     bool is_draw(Player<char>* player);
-//     bool game_is_over(Player<char>* player);
+//     // bool is_lose(Player<char>*);
+//     // bool is_draw(Player<char>* player);
+//     // bool game_is_over(Player<char>* player);
 // };
 //
 // class Infinity_XO_UI : public UI<char> {
