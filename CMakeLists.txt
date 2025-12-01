@@ -21,4 +21,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         Memory_XO.h
         pyramidTicTacToe.cpp
         pyramidTicTacToe.h
+        Connect4.cpp
+        Connect4.h
 )

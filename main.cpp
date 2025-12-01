@@ -1,6 +1,7 @@
 #include <iostream>
 #include "BoardGame_Classes.h"
 #include "SUS.h"
+#include "Connect4.h"
 #include "miser.h"
 #include "NUMERICALTICTACTOE.h"
 #include "fourxfourTicTacToe.h"
@@ -106,6 +107,31 @@ void playSUSGame() {
 
     delete p1;
     delete p2;
+}
+//======conect4=======//
+void playConnect4Game() {
+    Connect4_Board* board = new Connect4_Board();
+    Connect4_UI* ui = new Connect4_UI();
+
+    string name1, name2;
+    cout << "Enter Player 1 name (X): ";
+    cin >> name1;
+    cout << "Enter Player 2 name (O): ";
+    cin >> name2;
+
+    Player<char>* p1 = new Player<char>(name1, 'X', PlayerType::HUMAN);
+    Player<char>* p2 = new Player<char>(name2, 'O', PlayerType::HUMAN);
+
+    Player<char>* players[2] = {p1, p2};
+
+    GameManager<char> game(board, players, ui);
+    game.run();
+
+    delete p1;
+    delete p2;
+    delete board;
+    delete ui;
+
 }
 
 // ===================== PLAY 5x5 TIC-TAC-TOE GAME =====================
@@ -215,7 +241,8 @@ int main() {
                  playSUSGame() ;
                  break;
              case 2:
-                 // startGame(new FourInARow_Board(), new FourInARow_UI());
+                playConnect4Game();
+
                  break;
              case 3:
                  playFiveByFiveGame();
