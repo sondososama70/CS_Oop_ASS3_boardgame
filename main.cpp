@@ -8,6 +8,7 @@
 #include "FiveByFive.h"
 #include "Obstacles_XO.h"
 #include "Word_TicTacToe.h"
+#include "DiamondTicTacToe.h"
 
 using namespace std;
 template <typename T>
@@ -255,7 +256,7 @@ int main() {
                  startGame(new miser(), new MiserUI());
                  break;
              case 6:
-                 // startGame(new Diamond_Board(), new Diamond_UI());
+                  startGame(new DiamondTicTacToe() , new DiamondTicTacToeUI());
                  break;
              case 7:
                  startGame(new FourxFour_Board(), new FourxFour_UI());
