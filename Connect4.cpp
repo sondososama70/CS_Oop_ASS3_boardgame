@@ -88,6 +88,8 @@ Connect4_Player::Connect4_Player(string n, char s, PlayerType t)
 
 Connect4_UI::Connect4_UI()
     : UI<char>("WELCOME TO CONNECT 4!", 6) {}
+Connect4_UI::~Connect4_UI() {
+}
 
 Move<char>* Connect4_UI::get_move(Player<char>* player) {
     int col;

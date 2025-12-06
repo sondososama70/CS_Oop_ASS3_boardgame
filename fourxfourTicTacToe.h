@@ -6,6 +6,7 @@
 #define CS_ASSIGNMENT2_SOUND_FOURXFOURTICTACTOE_CLASSES_H
 
 #include "BoardGame_Classes.h"
+class FourxFour_Move;
 using namespace std;
 
 class FourxFour_Board :public Board<char> {
@@ -26,6 +27,21 @@ public :
     bool is_lose(Player<char>*) { return false; };
     bool is_draw(Player<char>* player);
     bool game_is_over(Player<char>* player);
+    vector<pair<int,int>> get_adjacent(int row, int col) ;
+    bool checking_win(char player);
+    //FourxFour_Move* AImove( char ai, char player2);
+
+    vector<FourxFour_Move*> get_all_valid_moves(char player_symbol);
+    int evaluate1(char ai_symbol, char human_symbol);
+    // bool is_win_symbol(char sym);
+    //int minimax(char ai_symbol, char human_symbol, bool isMaximizingPlayer);
+    // في FourxFour_Board.h
+    //int minimax(char ai_symbol, char human_symbol, bool isMaximizingPlayer, int alpha, int beta);
+    int minimax(char ai_symbol, char human_symbol, bool isMaximizingPlayer, int alpha, int beta, int depth) ;
+    FourxFour_Move* best_move(char ai, char human);
+
+    int evaluation2(char ai_symbol, char human_symbol);
+    int count_alignment(char symbol, int length);
 };
 
 class FourxFour_UI : public UI<char> {
@@ -38,6 +54,9 @@ public:
 
     Player<char>* create_player(string& name, char symbol, PlayerType type);
     virtual Move<char>* get_move(Player<char>* player);
+    // vector<pair<int,int>> get_adjacent(int row, int col, vector<vector<char>>& board) const;
+    // bool checking_win(vector<vector<char>>& board, char player);
+    // void AImove(vector<vector<char>>& board, char ai, char player2);
 
 
 

@@ -20,6 +20,7 @@ public:
 class DiamondTicTacToeUI : public UI<char> {
 public:
     DiamondTicTacToeUI();
+    ~DiamondTicTacToeUI();
     Player<char>** setup_players() override;
     Move<char>* get_move(Player<char>* player) override;
     Player<char>* create_player(string& name, char symbol, PlayerType type) override;

@@ -9,6 +9,8 @@
 #include "Obstacles_XO.h"
 #include "Word_TicTacToe.h"
 #include "DiamondTicTacToe.h"
+#include "Infinity_XO.h"
+#include "pyramidTicTacToe.h"
 
 using namespace std;
 template <typename T>
@@ -262,7 +264,7 @@ int main() {
                  startGame(new FourxFour_Board(), new FourxFour_UI());
                  break;
              case 8:
-                 // startGame(new Pyramid_Board(), new Pyramid_UI());
+                  startGame(new pyramidTicTacToe_board, new pyramid_tic_tac_toe_UI());
                  break;
              case 9:
                  cout << "\nStarting Numerical Tic Tac Toe...\n";
@@ -272,7 +274,7 @@ int main() {
                  startGame(new Obstacles_XO(), new Obstacles_XO_UI());
                  break;
              case 11:
-                 // startGame(new Infinity_Board(), new Infinity_UI());
+                 startGame(new Infinity_XO(), new Infinity_XO_UI());
                  break;
              case 12:
                  // Bonus Game 1

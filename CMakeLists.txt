@@ -23,4 +23,6 @@ add_executable(CS_ASSIGNMENT2_SOUND
         pyramidTicTacToe.h
         Connect4.cpp
         Connect4.h
+        DiamondTicTacToe.h
+        DiamondTicTacToe.cpp
 )

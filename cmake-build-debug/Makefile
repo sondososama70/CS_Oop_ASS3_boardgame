@@ -135,6 +135,54 @@ CS_ASSIGNMENT2_SOUND/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/build
 .PHONY : CS_ASSIGNMENT2_SOUND/fast
 
+Connect4.obj: Connect4.cpp.obj
+.PHONY : Connect4.obj
+
+# target to build an object file
+Connect4.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Connect4.cpp.obj
+.PHONY : Connect4.cpp.obj
+
+Connect4.i: Connect4.cpp.i
+.PHONY : Connect4.i
+
+# target to preprocess a source file
+Connect4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Connect4.cpp.i
+.PHONY : Connect4.cpp.i
+
+Connect4.s: Connect4.cpp.s
+.PHONY : Connect4.s
+
+# target to generate assembly for a file
+Connect4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/Connect4.cpp.s
+.PHONY : Connect4.cpp.s
+
+DiamondTicTacToe.obj: DiamondTicTacToe.cpp.obj
+.PHONY : DiamondTicTacToe.obj
+
+# target to build an object file
+DiamondTicTacToe.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/DiamondTicTacToe.cpp.obj
+.PHONY : DiamondTicTacToe.cpp.obj
+
+DiamondTicTacToe.i: DiamondTicTacToe.cpp.i
+.PHONY : DiamondTicTacToe.i
+
+# target to preprocess a source file
+DiamondTicTacToe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/DiamondTicTacToe.cpp.i
+.PHONY : DiamondTicTacToe.cpp.i
+
+DiamondTicTacToe.s: DiamondTicTacToe.cpp.s
+.PHONY : DiamondTicTacToe.s
+
+# target to generate assembly for a file
+DiamondTicTacToe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CS_ASSIGNMENT2_SOUND.dir\build.make CMakeFiles/CS_ASSIGNMENT2_SOUND.dir/DiamondTicTacToe.cpp.s
+.PHONY : DiamondTicTacToe.cpp.s
+
 FiveByFive.obj: FiveByFive.cpp.obj
 .PHONY : FiveByFive.obj
 
@@ -433,6 +481,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CS_ASSIGNMENT2_SOUND
+	@echo ... Connect4.obj
+	@echo ... Connect4.i
+	@echo ... Connect4.s
+	@echo ... DiamondTicTacToe.obj
+	@echo ... DiamondTicTacToe.i
+	@echo ... DiamondTicTacToe.s
 	@echo ... FiveByFive.obj
 	@echo ... FiveByFive.i
 	@echo ... FiveByFive.s

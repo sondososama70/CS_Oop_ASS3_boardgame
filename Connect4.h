@@ -30,6 +30,7 @@ public:
 class Connect4_UI : public UI<char> {
 public:
     Connect4_UI();
+    ~Connect4_UI();
     Move<char>* get_move(Player<char>* player) override;
     Player<char>* create_player(string& name, char symbol, PlayerType type) override;
 };

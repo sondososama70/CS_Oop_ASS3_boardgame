@@ -97,6 +97,8 @@ bool DiamondTicTacToe::game_is_over(Player<char>* player) {
 
 DiamondTicTacToeUI::DiamondTicTacToeUI() : UI<char>("Welcome to Diamond Tic-Tac-Toe! (Form a line of 3 and 4)", 3) {
 }
+DiamondTicTacToeUI::~DiamondTicTacToeUI() {
+}
 
 Player<char>* DiamondTicTacToeUI::create_player(string& name, char symbol, PlayerType type) {
     if (type == PlayerType::COMPUTER) {
