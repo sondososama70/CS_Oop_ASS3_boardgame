@@ -15,8 +15,6 @@ public:
     bool is_lose(Player<char>* player);
     bool is_draw(Player<char>* player);
     bool game_is_over(Player<char>* player);
-    // queue<pair<int, int>> moves;
-    // void removedMoves();
     queue<pair<int,int>> moves;
 };
 

@@ -27,7 +27,7 @@ bool Infinity_XO::update_board(Move<char>* move) {
             n_moves++;
             board[x][y] = toupper(mark);
             moves.push({x, y});
-            if (moves.size() > 3) {
+            if (n_moves % 3 == 0) {
                 auto oldest = moves.front();
                 moves.pop();
                 int dim1 = oldest.first;
@@ -101,27 +101,3 @@ Move<char>* Infinity_XO_UI::get_move(Player<char>* player) {
     }
     return new Move<char>(x, y, player->get_symbol());
 }
-
-
-
-
-// bool Infinity_XO::update_board(Move<char>* move) {
-//     int x = move->get_x();
-//     int y = move->get_y();
-//     char mark = move->get_symbol();
-//     if (x < 0 || x >= rows || y < 0 || y >= columns)
-//         return false;
-//     if (board[x][y] != blank_symbol)
-//         return false;
-//     board[x][y] = toupper(mark);
-//     n_moves++;
-//     moves.push({x, y});
-//     if (moves.size() > 3) {
-//         auto oldest = moves.front();
-//         moves.pop();
-//         int dim1 = oldest.first;
-//         int dim2 = oldest.second;
-//         board[dim1][dim2] = blank_symbol;
-//     }
-//     return true;
-// }
