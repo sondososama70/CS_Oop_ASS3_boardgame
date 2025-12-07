@@ -11,6 +11,7 @@
 #include "DiamondTicTacToe.h"
 #include "Infinity_XO.h"
 #include "pyramidTicTacToe.h"
+#include "Memory_XO.h"
 
 using namespace std;
 template <typename T>
