@@ -274,13 +274,13 @@ int main() {
                  startGame(new Obstacles_XO(), new Obstacles_XO_UI());
                  break;
              case 11:
-                 startGame(new Infinity_XO(), new Infinity_XO_UI());
+                  startGame(new Infinity_XO(), new Infinity_XO_UI());
                  break;
              case 12:
                  // Bonus Game 1
                  break;
              case 13:
-                 // Bonus Game 2
+                startGame(new Memory_XO(), new Memory_XO_UI());
                  break;
              case 14:
                  cout << "\nGoodbye, Thanks for playing.\n";
