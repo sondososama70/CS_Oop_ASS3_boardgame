@@ -5,7 +5,7 @@
 
 using namespace std;
 
-DiamondTicTacToe::DiamondTicTacToe() : Board<char>(5, 5) {
+DiamondTicTacToe::DiamondTicTacToe() : Board<char>(7, 7) {
     n_moves = 0;
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
@@ -26,15 +26,17 @@ void DiamondTicTacToe::set_cell(int r, int c, char symbol) {
     else if (symbol == 0) n_moves--;
 }
 bool DiamondTicTacToe::inside_diamond(int r, int c) {
-    if (r == 0 || r == 4) return (c == 2);
-    if (r == 1 || r == 3) return (c >= 1 && c <= 3);
-    if (r == 2) return true;
+    if (r == 0 || r == 6) return (c == 3);
+    if (r == 1 || r == 5) return (c >= 2 && c <= 4);
+    if (r == 4 || r == 2) return (c >= 1 && c <= 5);
+    if (r == 3) return true;
     return false;
 }
+
 bool DiamondTicTacToe::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
-    if (x >= 0 && x < 5 && y >= 0 && y < 5 && inside_diamond(x, y) && board[x][y] == 0) {
+    if (x >= 0 && x < 7 && y >= 0 && y < 7 && inside_diamond(x, y) && board[x][y] == 0) {
         board[x][y] = move->get_symbol();
         n_moves++;
         return true;
@@ -43,7 +45,7 @@ bool DiamondTicTacToe::update_board(Move<char>* move) {
 }
 int DiamondTicTacToe::checkLine(char symbol, int r, int c, int lr, int lc) {
     int count = 0;
-    while (r >= 0 && r < 5 && c >= 0 && c < 5 && board[r][c] == symbol) {
+    while (r >= 0 && r < 7 && c >= 0 && c < 7 && board[r][c] == symbol) {
         count++;
         r += lr;
         c += lc;
@@ -55,8 +57,8 @@ bool DiamondTicTacToe::is_win(Player<char>* player) {
     bool has_3[4] = {false};
     bool has_4[4] = {false};
 
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
+    for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 7; j++) {
             if (board[i][j] != s) continue;
 
             int len = checkLine(s, i, j, 0, 1);
@@ -88,7 +90,7 @@ bool DiamondTicTacToe::is_lose(Player<char>* player) {
 }
 
 bool DiamondTicTacToe::is_draw(Player<char>* player) {
-    return (n_moves == 13 && !is_win(player));
+    return (n_moves == 25 && !is_win(player));
 }
 
 bool DiamondTicTacToe::game_is_over(Player<char>* player) {
@@ -96,8 +98,6 @@ bool DiamondTicTacToe::game_is_over(Player<char>* player) {
 }
 
 DiamondTicTacToeUI::DiamondTicTacToeUI() : UI<char>("Welcome to Diamond Tic-Tac-Toe! (Form a line of 3 and 4)", 3) {
-}
-DiamondTicTacToeUI::~DiamondTicTacToeUI() {
 }
 
 Player<char>* DiamondTicTacToeUI::create_player(string& name, char symbol, PlayerType type) {
@@ -144,68 +144,51 @@ Move<char>* DiamondTicTacToeUI::get_move(Player<char>* p) {
 }
 
 DiamondAI::DiamondAI(string name, char symbol) : Player<char>(name, symbol, PlayerType::COMPUTER) {}
-
 Move<char>* DiamondAI::get_move(Player<char>* p) {
-    DiamondTicTacToe* board = dynamic_cast<DiamondTicTacToe*>(this->boardPtr);
+    DiamondTicTacToe* board = dynamic_cast<DiamondTicTacToe*>(boardPtr);
+    char opp = (symbol == 'X') ? 'O' : 'X';
 
-    int bestVal = -100000;
+    for (int r = 0; r < 7; r++) {
+        for (int c = 0; c < 7; c++) {
+            if (!board->inside_diamond(r, c) || board->get_cell(r, c) != 0) continue;
+
+            board->set_cell(r, c, symbol);
+            if (board->is_win(this)) {
+                board->set_cell(r, c, 0);
+                return new Move<char>(r, c, symbol);
+            }
+            board->set_cell(r, c, 0);
+        }
+    }
+    Player<char> dummy("dummy", opp, PlayerType::HUMAN);
+    for (int r = 0; r < 7; r++) {
+        for (int c = 0; c < 7; c++) {
+            if (!board->inside_diamond(r, c) || board->get_cell(r, c) != 0) continue;
+
+            board->set_cell(r, c, opp);
+            if (board->is_win(&dummy)) {
+                board->set_cell(r, c, 0);
+                return new Move<char>(r, c, symbol);
+            }
+            board->set_cell(r, c, 0);
+        }
+    }
+
+    int bestDist = 1000;
     Move<char>* bestMove = nullptr;
 
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            if (board->inside_diamond(i, j) && board->get_cell(i, j) == 0) {
+    for (int r = 0; r < 7; r++) {
+        for (int c = 0; c < 7; c++) {
+            if (!board->inside_diamond(r, c) || board->get_cell(r, c) != 0) continue;
 
-                board->set_cell(i, j, symbol);
-                int moveVal = minimax(board, 0, false);
-                board->set_cell(i, j, 0);
-
-                if (moveVal > bestVal) {
-                    bestVal = moveVal;
-                    delete bestMove;
-                    bestMove = new Move<char>(i, j, symbol);
-                }
+            int dist = abs(r - 3) + abs(c - 3);
+            if (dist < bestDist) {
+                bestDist = dist;
+                delete bestMove;
+                bestMove = new Move<char>(r, c, symbol);
             }
         }
     }
+
     return bestMove;
-}
-
-int DiamondAI::minimax(DiamondTicTacToe* board, int depth, bool isMaximizing) {
-
-    if (depth > 4) return 0;
-
-    if (board->is_win(this)) return 10 - depth;
-
-    char dummyplayer = (symbol == 'X') ? 'O' : 'X';
-    Player<char> dummy("dummy", dummyplayer, PlayerType::HUMAN);
-    if (board->is_win(&dummy)) return -10 + depth;
-
-    if (board->is_draw(this)) return 0;
-
-    if (isMaximizing) {
-        int best = -1000;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (board->inside_diamond(i, j) && board->get_cell(i, j) == 0) {
-                    board->set_cell(i, j, symbol);
-                    best = max(best, minimax(board, depth + 1, false));
-                    board->set_cell(i, j, 0);
-                }
-            }
-        }
-        return best;
-    } else {
-        int best = 1000;
-        char dummyplayer = (symbol == 'X') ? 'O' : 'X';
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (board->inside_diamond(i, j) && board->get_cell(i, j) == 0) {
-                    board->set_cell(i, j, dummyplayer);
-                    best = min(best, minimax(board, depth + 1, true));
-                    board->set_cell(i, j, 0);
-                }
-            }
-        }
-        return best;
-    }
 }
