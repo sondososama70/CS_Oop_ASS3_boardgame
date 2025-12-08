@@ -6,6 +6,9 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new UltimateBoard object, initialize sub-boards and main board.
+ */
 UltimateBoard::UltimateBoard()
     : Board<char>(9, 9), last_main_row(-1), last_main_col(-1), first_move(true), move_count(0) {
 
@@ -15,6 +18,9 @@ UltimateBoard::UltimateBoard()
     main_board.resize(3, vector<char>(3, '.'));
 }
 
+/**
+ * @brief Apply an UltimateMove to a sub-board if valid.
+ */
 bool UltimateBoard::update_board(Move<char>* move) {
     UltimateMove* ultimate_move = static_cast<UltimateMove*>(move);
     if (!ultimate_move) return false;
@@ -57,6 +63,9 @@ bool UltimateBoard::update_board(Move<char>* move) {
     return true;
 }
 
+/**
+ * @brief Check whether player has won the main board.
+ */
 bool UltimateBoard::is_win(Player<char>* player) {
     char symbol = player->get_symbol();
     return check_win_condition(main_board, symbol);
@@ -78,23 +87,38 @@ bool UltimateBoard::is_draw(Player<char>* player) {
            !check_win_condition(main_board, opponent_symbol);
 }
 
+/**
+ * @brief Game over when any end condition occurs on main board.
+ */
 bool UltimateBoard::game_is_over(Player<char>* player) {
     return is_win(player) || is_lose(player) || is_draw(player);
 }
 
+/**
+ * @brief Return suggested next main-board coordinates (from last sub move).
+ */
 pair<int, int> UltimateBoard::get_next_main_board() const {
     return make_pair(last_main_row, last_main_col);
 }
 
+/**
+ * @brief Check whether a sub-board is completely filled.
+ */
 bool UltimateBoard::is_sub_board_full(int main_r, int main_c) const {
     const auto& sub_board = ultimate_board[main_r][main_c];
     return is_board_full(sub_board);
 }
 
+/**
+ * @brief Check whether a sub-board is won by symbol.
+ */
 bool UltimateBoard::is_sub_board_won(int main_r, int main_c, char symbol) const {
     return check_win_condition(ultimate_board[main_r][main_c], symbol);
 }
 
+/**
+ * @brief Return winner of a sub-board: 'X', 'O', 'D' (draw) or '.' (ongoing).
+ */
 char UltimateBoard::check_sub_winner(int main_r, int main_c) const {
     const auto& sub_board = ultimate_board[main_r][main_c];
 
@@ -104,6 +128,9 @@ char UltimateBoard::check_sub_winner(int main_r, int main_c) const {
     return '.';
 }
 
+/**
+ * @brief Update main_board entries based on sub-board winners.
+ */
 void UltimateBoard::update_main_board() {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -117,6 +144,9 @@ void UltimateBoard::update_main_board() {
     }
 }
 
+/**
+ * @brief Pretty-print the entire ultimate board and main-board status.
+ */
 void UltimateBoard::display_ultimate_board() const {
     cout << "\nUltimate Tic Tac Toe Board:\n\n";
 
@@ -166,6 +196,9 @@ void UltimateBoard::display_ultimate_board() const {
     cout << endl;
 }
 
+/**
+ * @brief Utility to check 3x3 win condition for symbol.
+ */
 bool UltimateBoard::check_win_condition(const vector<vector<char>>& board, char symbol) const {
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol)
@@ -184,6 +217,9 @@ bool UltimateBoard::check_win_condition(const vector<vector<char>>& board, char 
     return false;
 }
 
+/**
+ * @brief Check if a given 3x3 board is full (no '.' cells).
+ */
 bool UltimateBoard::is_board_full(const vector<vector<char>>& board) const {
     for (const auto& row : board) {
         for (char cell : row) {
@@ -193,9 +229,20 @@ bool UltimateBoard::is_board_full(const vector<vector<char>>& board) const {
     return true;
 }
 
+/**
+ * @class Ultimate_UI
+ * @brief UI wrapper to obtain human/computer moves and show board.
+ */
+
+/**
+ * @brief Construct UI with pointer to underlying UltimateBoard.
+ */
 Ultimate_UI::Ultimate_UI(UltimateBoard* board)
     : UI<char>("Welcome to Ultimate Tic Tac Toe!", 1), ultimate_board(board) {}
 
+/**
+ * @brief Get move based on player type.
+ */
 Move<char>* Ultimate_UI::get_move(Player<char>* player) {
     if (player->get_type() == PlayerType::HUMAN) {
         return get_human_move(player);
@@ -204,6 +251,9 @@ Move<char>* Ultimate_UI::get_move(Player<char>* player) {
     }
 }
 
+/**
+ * @brief Solicit a human ultimate move (main & sub coordinates).
+ */
 Move<char>* Ultimate_UI::get_human_move(Player<char>* player) {
     int main_r, main_c, sub_r, sub_c;
     char symbol = player->get_symbol();
@@ -228,6 +278,9 @@ Move<char>* Ultimate_UI::get_human_move(Player<char>* player) {
     }
 }
 
+/**
+ * @brief Generate a random computer move among valid ultimate moves.
+ */
 Move<char>* Ultimate_UI::get_computer_move(Player<char>* player) {
     cout << "\nComputer (" << player->get_symbol() << ") is thinking...\n";
 
@@ -265,6 +318,9 @@ Move<char>* Ultimate_UI::get_computer_move(Player<char>* player) {
     return computer_move;
 }
 
+/**
+ * @brief Collect all currently valid UltimateMoves for the player.
+ */
 vector<UltimateMove> Ultimate_UI::get_valid_moves(Player<char>* player) const {
     vector<UltimateMove> valid_moves;
     char symbol = player->get_symbol();
@@ -295,6 +351,9 @@ vector<UltimateMove> Ultimate_UI::get_valid_moves(Player<char>* player) const {
     return valid_moves;
 }
 
+/**
+ * @brief Setup player instances (X and O) with names and types via UI prompts.
+ */
 Player<char>** Ultimate_UI::setup_players() {
     Player<char>** players = new Player<char>*[2];
     vector<string> type_options = { "Human", "Computer" };
@@ -310,6 +369,9 @@ Player<char>** Ultimate_UI::setup_players() {
     return players;
 }
 
+/**
+ * @brief Create particular player type for Ultimate (computer or human).
+ */
 Player<char>* Ultimate_UI::create_player(string& name, char symbol, PlayerType type) {
     cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
          << " player: " << name << " (" << symbol << ")\n";
@@ -321,6 +383,9 @@ Player<char>* Ultimate_UI::create_player(string& name, char symbol, PlayerType t
     }
 }
 
+/**
+ * @brief Display the entire ultimate board matrix.
+ */
 void Ultimate_UI::display_board_matrix(const vector<vector<char>>& matrix) const {
     ultimate_board->display_ultimate_board();
 }
@@ -330,6 +395,14 @@ void Ultimate_UI::display_ultimate_game() const {
 }
 
 
+/**
+ * @class UltimateGameManager
+ * @brief Runs the game loop for Ultimate Tic Tac Toe using given UI and players.
+ */
+
+/**
+ * @brief Construct a new UltimateGameManager and attach board pointer to players.
+ */
 UltimateGameManager::UltimateGameManager(UltimateBoard* board, Player<char>* p1, Player<char>* p2, Ultimate_UI* u)
     : boardPtr(board), player1(p1), player2(p2), ui(u) {
 
@@ -337,6 +410,9 @@ UltimateGameManager::UltimateGameManager(UltimateBoard* board, Player<char>* p1,
     player2->set_board_ptr(board);
 }
 
+/**
+ * @brief Main loop: request moves, apply, check end conditions and announce results.
+ */
 void UltimateGameManager::run() {
     ui->display_ultimate_game();
 

@@ -3,9 +3,14 @@
 #include "SUS.h"
 #include <iostream>
 
+/**
+ * @class SUS
+ * @brief 3x3 scoring game where forming S-U-S sequences awards points.
+ */
 
-using namespace std;
-
+/**
+ * @brief Construct a new SUS board and zero player scores.
+ */
 SUS::SUS() : Board (3, 3) {
     score_p1 = 0;
     score_p2 = 0;
@@ -14,18 +19,20 @@ SUS::SUS() : Board (3, 3) {
             board[i][j] = '.';
 }
 
-// --------------------------------------
-// Display scores
-// --------------------------------------
+/**
+ * @brief Display both players' scores to stdout.
+ */
 void SUS::display_scores() const {
     cout << "SCORES \n";
     cout << "S: " << score_p1 << " points\n";
     cout << "U: " << score_p2 << " points\n";
 }
 
-// --------------------------------------
-// Update board with score calculation
-// --------------------------------------
+/**
+ * @brief Update board with move and compute delta in SUS sequences to award points.
+ * @param move Move to place.
+ * @return true on successful placement.
+ */
 bool SUS::update_board(Move<char>* move) {
     int r = move->get_x();
     int c = move->get_y();
@@ -68,9 +75,10 @@ bool SUS::update_board(Move<char>* move) {
     return true;
 }
 
-// --------------------------------------
-// Count ALL S-U-S sequences on board
-// --------------------------------------
+/**
+ * @brief Count all S-U-S sequences currently present on the board.
+ * @return number of S-U-S patterns.
+ */
 int SUS::count_SUS() {
     int count = 0;
 
@@ -108,7 +116,10 @@ int SUS::count_SUS() {
 
     return count;
 }
-// Win = who has highest SUS
+
+/**
+ * @brief Determine if player has higher score when game finishes.
+ */
 bool SUS::is_win(Player<char>* player) {
     if (!game_is_over(player)) {
         return false;
@@ -130,10 +141,9 @@ bool SUS::is_win(Player<char>* player) {
     return false;
 }
 
-
-// --------------------------------------
-// Check if player has lost
-// --------------------------------------
+/**
+ * @brief Determine if player has lower score at game end (lose).
+ */
 bool SUS::is_lose(Player<char>* player) {
     // In SUS, losing means opponent has higher score
     if (!game_is_over(player)) {
@@ -149,9 +159,9 @@ bool SUS::is_lose(Player<char>* player) {
     }
 }
 
-// --------------------------------------
-// Check if game is a draw
-// --------------------------------------
+/**
+ * @brief Check for draw: board full and equal scores.
+ */
 bool SUS::is_draw(Player<char>* player) {
     // Game is draw when board is full AND scores are equal
     if (n_moves == 9 && score_p1 == score_p2) {
@@ -161,19 +171,23 @@ bool SUS::is_draw(Player<char>* player) {
     return false;
 }
 
-// --------------------------------------
-// Check if game is over
-// --------------------------------------
+/**
+ * @brief Game ends when all cells are filled.
+ */
 bool SUS::game_is_over(Player<char>* player) {
     return (n_moves == 9);
 }
+
+/**
+ * @brief Getter for S player's score.
+ */
 int SUS::get_score_s() const {
     return score_p1;
 }
 
-// --------------------------------------
-// Get U score (for UI display)
-// --------------------------------------
+/**
+ * @brief Getter for U player's score.
+ */
 int SUS::get_score_u() const {
     return score_p2;
 }

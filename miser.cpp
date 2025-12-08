@@ -1,6 +1,14 @@
 #include "miser.h"
 #include "BoardGame_Classes.h"
 
+/**
+ * @class miser
+ * @brief 3x3 misere tic-tac-toe board (lose-by-making three-in-row).
+ */
+
+/**
+ * @brief Construct a new miser board and initialize cells to zero.
+ */
 miser::miser() : Board<char>(3, 3) {
     n_moves = 0;
     for (int i = 0; i < rows; i++) {
@@ -10,14 +18,25 @@ miser::miser() : Board<char>(3, 3) {
     }
 }
 
+/**
+ * @brief Get value at a cell.
+ */
 char miser::get_cell(int r, int c) {
     return board[r][c];
 }
+
+/**
+ * @brief Set a cell symbol and update move count accordingly.
+ */
 void miser::set_cell(int r, int c, char symbol) {
     board[r][c] = symbol;
     if (symbol != 0) n_moves++;
     else n_moves--;
 }
+
+/**
+ * @brief Place move on board if valid.
+ */
 bool miser::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -29,9 +48,17 @@ bool miser::update_board(Move<char>* move) {
         n_moves++;
         return true;
 }
+
+/**
+ * @brief This implementation does not use a direct win (misere rules).
+ */
 bool miser::is_win(Player<char>* p) {
     return false;
 }
+
+/**
+ * @brief Check if player has made a (losing) three-in-row.
+ */
 bool miser::is_lose(Player<char>* p) {
     char symbol = p->get_symbol();
     for (int i = 0; i < 3; i++) {
@@ -42,14 +69,31 @@ bool miser::is_lose(Player<char>* p) {
     if (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol) return true;
     return false;
 }
+
+/**
+ * @brief Check draw: board full and player not losing.
+ */
 bool miser::is_draw(Player<char>* p) {
     return (n_moves == 9 && !is_lose(p));
 }
+
+/**
+ * @brief Check if game over (loss or draw).
+ */
 bool miser::game_is_over(Player<char>* p) {
     return is_lose(p) || is_draw(p);
 }
+
+/**
+ * @class MiserUI
+ * @brief UI class for Misere game: player setup and moves.
+ */
 MiserUI::MiserUI() : UI("Welcome to Misere Tic Tac Toe Game!", 3) {
 }
+
+/**
+ * @brief Ask for player names and types; create player objects.
+ */
 Player<char>** MiserUI::setup_players() {
     Player<char>** players = new Player<char>*[2];
     vector<string> choices = {"Human", "Computer"};
@@ -70,7 +114,9 @@ Player<char>** MiserUI::setup_players() {
     return players;
 }
 
-
+/**
+ * @brief Get a move from player (handles computer AI and validation for human).
+ */
 Move<char>* MiserUI::get_move(Player<char>* player) {
 
     if (player->get_type() == PlayerType::COMPUTER) {
@@ -94,6 +140,9 @@ Move<char>* MiserUI::get_move(Player<char>* player) {
     }
 }
 
+/**
+ * @brief Create player instance; return MisereAI for computer.
+ */
 Player<char>* MiserUI::create_player(string& name, char symbol, PlayerType type) {
     if (type == PlayerType::COMPUTER) {
         return new MisereAI(name, symbol);
@@ -101,8 +150,19 @@ Player<char>* MiserUI::create_player(string& name, char symbol, PlayerType type)
     return new Player<char>(name, symbol, type);
 }
 
+/**
+ * @class MisereAI
+ * @brief AI player that uses minimax for misere rules.
+ */
+
+/**
+ * @brief Construct a new MisereAI.
+ */
 MisereAI::MisereAI(string name, char symbol) : Player<char>(name, symbol, PlayerType::COMPUTER) {}
 
+/**
+ * @brief Minimax search for best move value.
+ */
 int MisereAI::minimax(miser* board, int depth, bool isMaximizing) {
 
     if (board->is_lose(this)) return -10 + depth;
@@ -141,6 +201,9 @@ int MisereAI::minimax(miser* board, int depth, bool isMaximizing) {
     }
 }
 
+/**
+ * @brief Compute best move for AI and return allocated Move object.
+ */
 Move<char>* MisereAI::get_move(Player<char>* p) {
     miser* board = dynamic_cast<miser*>(boardPtr);
 

@@ -1,6 +1,14 @@
 #include "Infinity_XO.h"
 using namespace std;
 
+/**
+ * @class Infinity_XO
+ * @brief 3x3 board where pieces can be undone and oldest moves removed every 3 moves.
+ */
+
+/**
+ * @brief Construct an Infinity_XO board and initialize blank cells.
+ */
 Infinity_XO::Infinity_XO() : Board(3, 3) {
     // Initialize all cells with blank_symbol
     for (auto& row : board) {
@@ -10,6 +18,9 @@ Infinity_XO::Infinity_XO() : Board(3, 3) {
     }
 }
 
+/**
+ * @brief Apply or undo a move. If mark == 0, treat as undo.
+ */
 bool Infinity_XO::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -40,6 +51,9 @@ bool Infinity_XO::update_board(Move<char>* move) {
     return false;
 }
 
+/**
+ * @brief Check if given player has a 3-in-a-row on board.
+ */
 bool Infinity_XO::is_win(Player<char> *player) {
     const char sym = player->get_symbol();
 
@@ -71,15 +85,28 @@ bool Infinity_XO::is_draw(Player<char> *player) {
     return false;
 }
 
+/**
+ * @brief Game considered over on a win.
+ */
 bool Infinity_XO::game_is_over(Player<char> *player) {
     return is_win(player);
 }
 
 
-//UI implementation:
+/**
+ * @class Infinity_XO_UI
+ * @brief User interface for Infinity_XO; handles input and player creation.
+ */
+
+/**
+ * @brief Construct the Infinity_XO UI.
+ */
 Infinity_XO_UI::Infinity_XO_UI() : UI<char>("Welcome to the Infinity XO Board" , 3) {}
 Infinity_XO_UI::~Infinity_XO_UI() {}
 
+/**
+ * @brief Create player (human or computer) for Infinity_XO.
+ */
 Player<char>* Infinity_XO_UI::create_player(string& name, char symbol, PlayerType type) {
     // Create player based on type
     cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
@@ -88,6 +115,9 @@ Player<char>* Infinity_XO_UI::create_player(string& name, char symbol, PlayerTyp
     return new Player<char>(name, symbol, type);
 }
 
+/**
+ * @brief Obtain next Move for either human or computer players.
+ */
 Move<char>* Infinity_XO_UI::get_move(Player<char>* player) {
     int x, y;
 

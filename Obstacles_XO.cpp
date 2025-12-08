@@ -35,6 +35,9 @@
 #include <ctime>
 using namespace std;
 
+/**
+ * @brief Construct Obstacles_XO and initialize random seed and blank board.
+ */
 Obstacles_XO::Obstacles_XO() : Board(6, 6) {
     srand(time(0)); // Seed random number generator
     n_moves = 0;
@@ -45,6 +48,9 @@ Obstacles_XO::Obstacles_XO() : Board(6, 6) {
     }
 }
 
+/**
+ * @brief Apply a move unless the cell is blocked/occupied or out-of-bounds.
+ */
 bool Obstacles_XO::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -78,6 +84,9 @@ bool Obstacles_XO::update_board(Move<char>* move) {
     return true;
 }
 
+/**
+ * @brief Add up to two obstacles into random blank cells.
+ */
 void Obstacles_XO::add_obstacles() {
     int obstacles_added = 0;
     int max_attempts = 20; // Prevent infinite loop
@@ -95,6 +104,9 @@ void Obstacles_XO::add_obstacles() {
     }
 }
 
+/**
+ * @brief Check whether the player has 4-in-a-row (wins) ignoring obstacles.
+ */
 bool Obstacles_XO::is_win(Player<char> *player) {
     const char sym = player->get_symbol();
     auto all_equal = [&](char a, char b, char c , char d) {
@@ -130,6 +142,9 @@ bool Obstacles_XO::is_lose(Player<char> *) {
     return false;
 }
 
+/**
+ * @brief Determine draw: no blank '.' cells and no win.
+ */
 bool Obstacles_XO::is_draw(Player<char> *player) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
@@ -140,12 +155,18 @@ bool Obstacles_XO::is_draw(Player<char> *player) {
     return !is_win(player);
 }
 
+/**
+ * @brief Game over when win or draw.
+ */
 bool Obstacles_XO::game_is_over(Player<char> *player) {
     if (is_win(player))
         return true;
     return is_draw(player);
 }
 
+/**
+ * @brief Print the current board to stdout.
+ */
 void Obstacles_XO::print_board() {
     cout << "\nCurrent Board:\n";
     cout << "  ";

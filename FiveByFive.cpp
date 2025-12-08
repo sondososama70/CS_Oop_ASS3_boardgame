@@ -1,6 +1,16 @@
 #include "FiveByFive.h"
 using namespace std;
 
+/**
+ * @class FiveByFive
+ * @brief 5x5 board where winner is determined by comparing 3-in-a-row counts.
+ *
+ * Attributes inherited: rows, columns, board, n_moves, blank_symbol.
+ */
+
+/**
+ * @brief Construct a new FiveByFive board and initialize cells to blank.
+ */
 FiveByFive::FiveByFive() : Board(5, 5) {
     for (auto& row : board) {
         for (auto& cell : row) {
@@ -9,6 +19,10 @@ FiveByFive::FiveByFive() : Board(5, 5) {
     }
 }
 
+/**
+ * @brief Place a mark on the 5x5 board if the cell is valid and empty.
+ * @return true on success.
+ */
 bool FiveByFive::update_board(Move<char> *move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -24,6 +38,10 @@ bool FiveByFive::update_board(Move<char> *move) {
     return false;
 }
 
+/**
+ * @brief Determine whether a player has more 3-in-a-row sequences than opponent.
+ * Note: only considered after almost-all moves complete.
+ */
 bool FiveByFive::is_win(Player<char> *player) {
     // Only determine win after all moves are completed
     if (n_moves < 24) return false;
@@ -37,6 +55,9 @@ bool FiveByFive::is_win(Player<char> *player) {
     return player_sequences > opponent_sequences;
 }
 
+/**
+ * @brief Determine whether a player has fewer sequences (loses).
+ */
 bool FiveByFive::is_lose(Player<char> *player) {
     // Only determine lose after all moves are completed
     if (n_moves < 24) return false;
@@ -50,6 +71,9 @@ bool FiveByFive::is_lose(Player<char> *player) {
     return player_sequences < opponent_sequences;
 }
 
+/**
+ * @brief Determine draw when sequences equal after final move.
+ */
 bool FiveByFive::is_draw(Player<char> *player) {
     // Game is a draw when all cells are filled and sequences are equal
     if (n_moves == 24) {
@@ -61,11 +85,18 @@ bool FiveByFive::is_draw(Player<char> *player) {
     return false;
 }
 
+/**
+ * @brief Game finishes when board is full (24 moves used here).
+ */
 bool FiveByFive::game_is_over(Player<char> *player) {
     return (n_moves == 24);
 }
 
-// Helper function to count 3-in-a-row sequences for any symbol
+/**
+ * @brief Count all 3-in-a-row sequences for symbol sym across board.
+ * @param sym Symbol to count (e.g., 'X' or 'O').
+ * @return number of sequences found.
+ */
 int FiveByFive::count_sequences(char sym) {
     int count = 0;
 

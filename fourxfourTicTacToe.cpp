@@ -1,6 +1,12 @@
-//
-// Created by HP on 11/26/2025.
-//
+/**
+ * @file fourxfourTicTacToe.cpp
+ * @brief 4x4 moving-token Tic-Tac-Toe variant with AI (minimax) and UI.
+ *
+ * Implements:
+ * - FourxFour_Board: board logic with tokens that move to adjacent cells.
+ * - FourxFour_Move: move type carrying source and destination coordinates.
+ * - FourxFour_UI: player creation and move solicitation (human/computer).
+ */
 
 #include "fourxfourTicTacToe.h"
 
@@ -27,6 +33,10 @@ void FourxFour_Board :: init_start_positions() {
 }
 FourxFour_Board::~FourxFour_Board() { }
 
+/**
+ * @brief Check whether (r,c) are inside board bounds.
+ * @return true if in bounds.
+ */
 bool FourxFour_Board::in_bounds(int r, int c) const {
     if (r >=0 && r <= 3 && c >= 0 && c <= 3) {
         return true;
@@ -34,6 +44,9 @@ bool FourxFour_Board::in_bounds(int r, int c) const {
     return false;
 }
 
+/**
+ * @brief Return whether two cells are adjacent (Manhattan distance == 1).
+ */
 bool FourxFour_Board::is_adjacent(int r, int c, int newr, int newc) const {
     if (abs(r - newr)+ abs(c-newc)==1) {
         return true;
@@ -41,6 +54,11 @@ bool FourxFour_Board::is_adjacent(int r, int c, int newr, int newc) const {
     return false;
 }
 
+/**
+ * @brief Apply a FourxFour_Move: move token from source to destination or perform undo.
+ * @param move Pointer to FourxFour_Move.
+ * @return true if update applied (destination in bounds), false otherwise.
+ */
 bool FourxFour_Board::update_board(Move<char> *move) {
     FourxFour_Move* mv = static_cast<FourxFour_Move*>(move);
 
@@ -64,6 +82,9 @@ bool FourxFour_Board::update_board(Move<char> *move) {
     return false;
 }
 
+/**
+ * @brief Check if player has a 3-in-a-row on 4x4 board according to game rules.
+ */
 bool FourxFour_Board::is_win(Player<char> *player) {
     const char sym =player->get_symbol();
     return checking_win(sym);
@@ -79,6 +100,9 @@ bool FourxFour_Board::game_is_over(Player<char> *player) {
 }
 
 
+/**
+ * @brief Return list of empty adjacent cells to (row,col).
+ */
 vector<pair<int, int>> FourxFour_Board::get_adjacent(int row, int col) {
     vector<pair<int,int>> moves;
     int TestR[] = {-1, 1, 0, 0};
@@ -95,6 +119,9 @@ vector<pair<int, int>> FourxFour_Board::get_adjacent(int row, int col) {
 }
 
 
+/**
+ * @brief Check for a winning 3-in-line for the given player symbol.
+ */
 bool FourxFour_Board::checking_win( char player) {
     for(int i = 0; i < 4; i++) {
         for(int j = 0; j < 2; j++) {
@@ -118,6 +145,9 @@ bool FourxFour_Board::checking_win( char player) {
 }
 
 
+/**
+ * @brief Basic evaluation returning large positive/negative for wins.
+ */
 int FourxFour_Board::evaluate1(char ai_symbol, char human_symbol) {
     if (checking_win(ai_symbol)) return 1000;
     if (checking_win(human_symbol)) return -1000;
@@ -126,6 +156,9 @@ int FourxFour_Board::evaluate1(char ai_symbol, char human_symbol) {
 
 
 const int MAX_DEPTH = 3;
+/**
+ * @brief Minimax with alpha-beta pruning. Depth-limited and returns evaluation score.
+ */
 int FourxFour_Board::minimax(char ai, char human, bool isMaximizingPlayer, int alpha, int beta, int depth) {
     int score = evaluate1(ai, human);
     if (score != 0) return score;
@@ -162,6 +195,10 @@ int FourxFour_Board::minimax(char ai, char human, bool isMaximizingPlayer, int a
     return best_score;
 }
 
+/**
+ * @brief Count contiguous alignments of given length for heuristic scoring.
+ * @param length length of contiguous alignment to check (e.g., 2)
+ */
 int FourxFour_Board::count_alignment(char symbol, int length) {
     int count = 0;
     for (int i = 0; i < rows; i++) {
@@ -181,6 +218,9 @@ int FourxFour_Board::count_alignment(char symbol, int length) {
     return count;
 }
 
+/**
+ * @brief Heuristic evaluation used at depth limit combining alignments and wins.
+ */
 int FourxFour_Board::evaluation2(char ai, char human) {
     int value = 0;
     if (checking_win(ai)) value += 1000;
@@ -190,6 +230,10 @@ int FourxFour_Board::evaluation2(char ai, char human) {
 }
 
 
+/**
+ * @brief Compute best move for AI by exploring valid moves and running minimax.
+ * @return allocated FourxFour_Move* representing best move (caller takes ownership).
+ */
 FourxFour_Move* FourxFour_Board::best_move(char ai, char human) {
     int bestVal = -100000;
     FourxFour_Move* final_best_move = nullptr;
@@ -221,6 +265,10 @@ FourxFour_Move* FourxFour_Board::best_move(char ai, char human) {
     return final_best_move;
 }
 
+/**
+ * @brief Enumerate all valid moves (moving any cell that contains player_symbol to adjacent empties).
+ * @return vector of allocated FourxFour_Move* (caller must delete).
+ */
 vector<FourxFour_Move*> FourxFour_Board::get_all_valid_moves(char player_symbol) {
     vector<FourxFour_Move*> moves;
     for (int r = 0; r < rows; r++) {
@@ -238,15 +286,30 @@ vector<FourxFour_Move*> FourxFour_Board::get_all_valid_moves(char player_symbol)
 
 //end of board implementation
 
+/**
+ * @class FourxFour_UI
+ * @brief UI for FourxFour game: player creation and move acquisition.
+ */
 
+/**
+ * @brief Construct UI instance.
+ */
 FourxFour_UI::FourxFour_UI() : UI<char>("Welcome , The Game has started",3) {}
 FourxFour_UI::~FourxFour_UI() { }
+
+/**
+ * @brief Create a human or computer player object.
+ */
 Player<char> *FourxFour_UI::create_player(string &name, char symbol, PlayerType type) {
     cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
         << " player: " << name << " (" << symbol << ")\n";
     return new Player<char>(name, symbol, type);
 }
 
+/**
+ * @brief Get move for a player: for human solicit source/destination validated against board;
+ * for computer return result of board.best_move.
+ */
 Move<char>* FourxFour_UI::get_move(Player<char>* player) {
     int oldX, oldY, newX, newY;
     FourxFour_Board* boardd = dynamic_cast<FourxFour_Board*>(player->get_board_ptr());

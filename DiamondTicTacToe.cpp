@@ -5,6 +5,9 @@
 
 using namespace std;
 
+/**
+ * @brief Construct Diamond board and initialize playable cells and blocked cells ('#').
+ */
 DiamondTicTacToe::DiamondTicTacToe() : Board<char>(7, 7) {
     n_moves = 0;
     for (int i = 0; i < rows; i++) {
@@ -17,14 +20,26 @@ DiamondTicTacToe::DiamondTicTacToe() : Board<char>(7, 7) {
         }
     }
 }
+
+/**
+ * @brief Get raw cell content.
+ */
 char DiamondTicTacToe::get_cell(int r, int c) {
     return board[r][c];
 }
+
+/**
+ * @brief Set cell content and update n_moves accordingly.
+ */
 void DiamondTicTacToe::set_cell(int r, int c, char symbol) {
     board[r][c] = symbol;
     if (symbol != 0 && symbol != '#') n_moves++;
     else if (symbol == 0) n_moves--;
 }
+
+/**
+ * @brief Return whether (r,c) falls inside the diamond playable area.
+ */
 bool DiamondTicTacToe::inside_diamond(int r, int c) {
     if (r == 0 || r == 6) return (c == 3);
     if (r == 1 || r == 5) return (c >= 2 && c <= 4);
@@ -33,6 +48,9 @@ bool DiamondTicTacToe::inside_diamond(int r, int c) {
     return false;
 }
 
+/**
+ * @brief Place a move on the diamond board if valid.
+ */
 bool DiamondTicTacToe::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -43,6 +61,10 @@ bool DiamondTicTacToe::update_board(Move<char>* move) {
     }
     return false;
 }
+
+/**
+ * @brief Helper to check contiguous same-symbol length in given direction.
+ */
 int DiamondTicTacToe::checkLine(char symbol, int r, int c, int lr, int lc) {
     int count = 0;
     while (r >= 0 && r < 7 && c >= 0 && c < 7 && board[r][c] == symbol) {
@@ -52,6 +74,10 @@ int DiamondTicTacToe::checkLine(char symbol, int r, int c, int lr, int lc) {
     }
     return count;
 }
+
+/**
+ * @brief Win condition: player must simultaneously have a 3-in-line and a 4-in-line in different directions.
+ */
 bool DiamondTicTacToe::is_win(Player<char>* player) {
     char s = player->get_symbol();
     bool has_3[4] = {false};
@@ -89,17 +115,30 @@ bool DiamondTicTacToe::is_lose(Player<char>* player) {
     return false;
 }
 
+/**
+ * @brief Draw when 25 playable cells filled and no win for player.
+ */
 bool DiamondTicTacToe::is_draw(Player<char>* player) {
     return (n_moves == 25 && !is_win(player));
 }
 
+/**
+ * @brief Game over when win or draw.
+ */
 bool DiamondTicTacToe::game_is_over(Player<char>* player) {
     return is_win(player) || is_draw(player);
 }
 
+/**
+ * @class DiamondTicTacToeUI
+ * @brief UI wrapper for diamond game: player setup and getting moves.
+ */
 DiamondTicTacToeUI::DiamondTicTacToeUI() : UI<char>("Welcome to Diamond Tic-Tac-Toe! (Form a line of 3 and 4)", 3) {
 }
 
+/**
+ * @brief Factory to create human or AI players (DiamondAI for computer).
+ */
 Player<char>* DiamondTicTacToeUI::create_player(string& name, char symbol, PlayerType type) {
     if (type == PlayerType::COMPUTER) {
         return new DiamondAI(name, symbol);
@@ -107,6 +146,9 @@ Player<char>* DiamondTicTacToeUI::create_player(string& name, char symbol, Playe
     return new Player<char>(name, symbol, type);
 }
 
+/**
+ * @brief Setup both players (name & type) using UI prompts.
+ */
 Player<char>** DiamondTicTacToeUI::setup_players() {
     Player<char>** players = new Player<char>*[2];
     vector<string> choices = {"Human", "Computer"};
@@ -122,6 +164,9 @@ Player<char>** DiamondTicTacToeUI::setup_players() {
     return players;
 }
 
+/**
+ * @brief Get move from human (validated) or forward to AI.
+ */
 Move<char>* DiamondTicTacToeUI::get_move(Player<char>* p) {
     if (p->get_type() == PlayerType::COMPUTER) {
         DiamondAI* ai = dynamic_cast<DiamondAI*>(p);
@@ -143,7 +188,19 @@ Move<char>* DiamondTicTacToeUI::get_move(Player<char>* p) {
     }
 }
 
+/**
+ * @class DiamondAI
+ * @brief Simple AI: tries immediate win, blocks opponent immediate win, otherwise moves toward center.
+ */
+
+/**
+ * @brief Construct DiamondAI.
+ */
 DiamondAI::DiamondAI(string name, char symbol) : Player<char>(name, symbol, PlayerType::COMPUTER) {}
+
+/**
+ * @brief Choose and return Move<char>* for AI player.
+ */
 Move<char>* DiamondAI::get_move(Player<char>* p) {
     DiamondTicTacToe* board = dynamic_cast<DiamondTicTacToe*>(boardPtr);
     char opp = (symbol == 'X') ? 'O' : 'X';

@@ -35,7 +35,11 @@ void load_dictionary() {
     cout << "Dictionary loaded with " << dictionary.size() << " words.\n";
 }
 
-//Function to check if a word is valid
+/**
+ * @brief Check whether a word exists in the loaded dictionary.
+ * @param word Candidate uppercase word to validate.
+ * @return true if present in dictionary.
+ */
 bool is_valid_word(const string& word) {
     if (!dictionary_loaded) {
         load_dictionary();
@@ -43,6 +47,14 @@ bool is_valid_word(const string& word) {
     return dictionary.count(word);
 }
 
+/**
+ * @class Word_TicTacToe
+ * @brief 3x3 letter-placement board which wins if any full line forms a valid dictionary word.
+ */
+
+/**
+ * @brief Construct a new Word_TicTacToe board and initialize blank cells.
+ */
 Word_TicTacToe::Word_TicTacToe() : Board(3 , 3){
     for (auto& row : board) {
         for (auto& cell : row) {
@@ -52,6 +64,11 @@ Word_TicTacToe::Word_TicTacToe() : Board(3 , 3){
     load_dictionary();
 }
 
+/**
+ * @brief Place a letter at (x,y) if within bounds and empty.
+ * @param move Pointer to Move<char> containing coordinates and the letter.
+ * @return true on successful placement.
+ */
 bool Word_TicTacToe::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -68,7 +85,11 @@ bool Word_TicTacToe::update_board(Move<char>* move) {
     return false;
 }
 
-//Check if the line forms a valid word using letters from both players
+/**
+ * @brief Check whether a completed line string is a valid dictionary word.
+ * @param line String of exactly 3 characters.
+ * @return true if the word exists in the dictionary.
+ */
 bool check_line(const string& line) {
     // A line must be complete
     if (line.find('.') != string::npos) {
@@ -79,6 +100,12 @@ bool check_line(const string& line) {
     return is_valid_word(line);
 }
 
+/**
+ * @brief Determine if there exists any winning line (row, column, main or anti-diagonal)
+ * that forms a valid 3-letter word.
+ * @param player Player pointer (unused as words can use letters from both players).
+ * @return true if any winning word is present.
+ */
 bool Word_TicTacToe::is_win(Player<char>* player) {
     //Check rows
     for (int i = 0; i < rows; ++i) {
@@ -122,10 +149,16 @@ bool Word_TicTacToe::is_win(Player<char>* player) {
     return false;
 }
 
+/**
+ * @brief No explicit lose condition for Word_TicTacToe.
+ */
 bool Word_TicTacToe::is_lose(Player<char> *player) {
     return false;
 }
 
+/**
+ * @brief Draw when board full and no valid word lines.
+ */
 bool Word_TicTacToe::is_draw(Player<char> *player) {
     if (n_moves == rows * columns && !is_win(player)) {
         return true;
@@ -133,21 +166,45 @@ bool Word_TicTacToe::is_draw(Player<char> *player) {
     return false;
 }
 
+/**
+ * @brief Game over when a valid word exists or board is full without such a word.
+ */
 bool Word_TicTacToe::game_is_over(Player<char> *player) {
     return is_win(player) || is_draw(player);
 }
 
 // UI Implementation
+
+/**
+ * @class Word_TicTacToe_UI
+ * @brief UI for Word TicTacToe: prompts for row/column/letter and creates players.
+ */
+
+/**
+ * @brief Construct UI instance.
+ */
 Word_TicTacToe_UI::Word_TicTacToe_UI() : UI<char>("Welcome to Word TicTacToe" , 3) {}
 
 Word_TicTacToe_UI::~Word_TicTacToe_UI() {}
 
+/**
+ * @brief Create a player (human or computer) for the game.
+ * @param name Player name.
+ * @param symbol Character symbol associated with player (not used as letter restriction).
+ * @param type PlayerType enum.
+ * @return allocated Player<char>* instance.
+ */
 Player<char>* Word_TicTacToe_UI::create_player(string& name, char symbol, PlayerType type) {
     cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
          << " player: " << name << "\n";
     return new Player<char>(name, symbol, type);
 }
 
+/**
+ * @brief Solicit a move: for human ask row/column/letter with validation; for computer choose random cell and letter.
+ * @param player Player making the move.
+ * @return allocated Move<char>* with chosen placement.
+ */
 Move<char>* Word_TicTacToe_UI::get_move(Player<char>* player) {
     int row, column;
     char letter;

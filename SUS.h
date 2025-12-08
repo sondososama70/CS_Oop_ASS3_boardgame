@@ -1,34 +1,66 @@
+/**
+ * @file SUS.h
+ * @brief Header for SUS scoring game and simple AI/UI integrations.
+ */
+
 #ifndef SUS_H
 #define SUS_H
 
 #include "BoardGame_Classes.h"
 
+/**
+ * @class SUS
+ * @brief Board<char> specialization for S-U-S scoring game.
+ *
+ * Attributes:
+ * - score_p1 : int score for 'S' player
+ * - score_p2 : int score for 'U' player
+ */
 class SUS : public Board<char> {
 private:
     int score_p1;
     int score_p2;
 
 public:
+    /**
+     * @brief Construct a new SUS game board (3x3).
+     */
     SUS();
 
+    /**
+     * @brief Apply a move and update scores based on created S-U-S sequences.
+     * @param move pointer to Move<char>
+     * @return true if move applied
+     */
     bool update_board(Move<char>* move) override;
+
     bool is_win(Player<char>* player) override;
     bool is_lose(Player<char>* player) override ;
     bool is_draw(Player<char>* player) override;
     bool game_is_over(Player<char>* player) override;
 
+    /**
+     * @brief Count S-U-S sequences on current board.
+     * @return integer count of S-U-S patterns.
+     */
     int count_SUS();
+
     int get_score_s() const;
     int get_score_u() const;
 
-    // Display scores
+    /**
+     * @brief Print scores to stdout for UI display.
+     */
     void display_scores() const;
 };
 
 
 // AI PLAYER
 
-
+/**
+ * @class SUS_AI_Player
+ * @brief Simple AI player for SUS with heuristic move selection.
+ */
 class SUS_AI_Player : public Player<char> {
 private:
     SUS* gameBoard;
@@ -41,6 +73,10 @@ public:
         gameBoard = board;
     }
 
+    /**
+     * @brief Get AI chosen move. Uses simple heuristics (complete S-U-S, block, center, corners).
+     * @return new Move<char>* chosen by AI.
+     */
     Move<char>* get_move() {
         cout << name << " (" << symbol << ") is thinking...\n";
 
@@ -110,6 +146,9 @@ public:
     }
 
 private:
+    /**
+     * @brief Check whether board contains any S-U-S pattern.
+     */
     bool check_if_creates_sus(const vector<vector<char>>& board) {
         // Check all possible SUS patterns
         for (int i = 0; i < 3; i++) {
@@ -136,6 +175,10 @@ private:
 };
 
 // In SUS.h, update SUS_UI class
+/**
+ * @class SUS_UI
+ * @brief UI class for SUS game: handles player creation and move input.
+ */
 class SUS_UI : public UI<char> {
 public:
     SUS_UI() : UI("=== SUS Game ===", 3) {}

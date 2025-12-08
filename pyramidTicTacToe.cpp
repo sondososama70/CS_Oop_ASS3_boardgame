@@ -1,6 +1,7 @@
-//
-// Created by HP on 12/1/2025.
-//
+/**
+ * @file pyramidTicTacToe.cpp
+ * @brief Pyramid-shaped tic-tac-toe game implementation and AI/UI utilities.
+ */
 
 #include "pyramidTicTacToe.h"
 #include <iostream>
@@ -16,6 +17,10 @@ pyramidTicTacToe_board::pyramidTicTacToe_board() :Board(3,5) {
         {'.', '.', '.', '.', '.'}
     };
 }
+
+/**
+ * @brief Check whether (row,col) refers to a valid playable cell in the pyramid layout.
+ */
 bool pyramidTicTacToe_board::in_bounds(int row, int col) {
         if (row < 0 || row >= 3) return false;
         switch(row) {
@@ -26,6 +31,9 @@ bool pyramidTicTacToe_board::in_bounds(int row, int col) {
         }
 }
 
+/**
+ * @brief Apply or undo a move at specified pyramid coordinates.
+ */
 bool pyramidTicTacToe_board::update_board(Move<char>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -45,7 +53,9 @@ bool pyramidTicTacToe_board::update_board(Move<char>* move) {
     return false;
 }
 
-
+/**
+ * @brief Check whether a given symbol has any of the predefined winning lines.
+ */
 bool pyramidTicTacToe_board::is_win_symbol(char sym, const vector<vector<char>>& currentBoard) {
     vector<vector<pair<int,int>>> lines = {
         //horizontal
@@ -69,25 +79,40 @@ bool pyramidTicTacToe_board::is_win_symbol(char sym, const vector<vector<char>>&
     return false;
 }
 
+/**
+ * @brief Determine if provided player has a win on current board.
+ */
 bool pyramidTicTacToe_board::is_win(Player<char> *player) {
 
     return is_win_symbol(player->get_symbol(),this->board);
 }
 
+/**
+ * @brief Check for draw (9 moves used and no win).
+ */
 bool pyramidTicTacToe_board::is_draw(Player<char> *player) {
     return (n_moves==9 && !is_win(player));
 }
 
+/**
+ * @brief Game finished flag.
+ */
 bool pyramidTicTacToe_board::game_is_over(Player<char> *player) {
     return is_win(player) || is_draw(player);
 }
 
+/**
+ * @brief Evaluate board for minimax: +10 for AI win, -10 for human win, else 0.
+ */
 int pyramidTicTacToe_board::evaluate(char ai, char human) {
     if (is_win_symbol(ai,this->board)) return +10;
     if (is_win_symbol(human,this->board)) return -10;
     return 0;
 }
 
+/**
+ * @brief Return list of empty playable cells as (row,col) pairs.
+ */
 vector<pair<int,int>> pyramidTicTacToe_board::empty_cells() {
     vector<pair<int,int>> v;
     for (int r=0; r<rows; r++)
@@ -96,10 +121,17 @@ vector<pair<int,int>> pyramidTicTacToe_board::empty_cells() {
                 v.push_back({r,c});
     return v;
 }
+
+/**
+ * @brief Validate a candidate move coordinates.
+ */
 bool pyramidTicTacToe_board::is_valid_move(int r, int c) {
     return in_bounds(r, c) && board[r][c] == '.';
 }
 
+/**
+ * @brief Check whether pyramid board is full of playable marks.
+ */
 bool pyramidTicTacToe_board::is_full() {
     for (int r = 0; r < rows; r++)
         for (int c = 0; c < columns; c++)
@@ -107,7 +139,9 @@ bool pyramidTicTacToe_board::is_full() {
     return true;
 }
 
-
+/**
+ * @brief Minimax search implementation for the pyramid board.
+ */
 int pyramidTicTacToe_board::minimax(pyramidTicTacToe_board* board, int nOfMoves, bool isMax, char ai, char human) {
 
     int score = board->evaluate(ai, human);
@@ -145,7 +179,9 @@ int pyramidTicTacToe_board::minimax(pyramidTicTacToe_board* board, int nOfMoves,
     }
 }
 
-
+/**
+ * @brief Compute best move for AI using minimax; returns pair(row,col).
+ */
 pair<int,int>pyramidTicTacToe_board:: best_move(pyramidTicTacToe_board* board, char ai, char human) {
     int bestVal = -1000;
     pair<int,int> best = {-1, -1};
@@ -167,10 +203,17 @@ pair<int,int>pyramidTicTacToe_board:: best_move(pyramidTicTacToe_board* board, c
 
 //end of board implementation
 
+/**
+ * @class pyramid_tic_tac_toe_UI
+ * @brief UI class handling player creation and move acquisition.
+ */
 pyramid_tic_tac_toe_UI::pyramid_tic_tac_toe_UI() :UI<char>("Pyramid Tic Tac Toe Game has started",3) {}
 
 pyramid_tic_tac_toe_UI::~pyramid_tic_tac_toe_UI() {}
 
+/**
+ * @brief Create human or AI player; AI returns Pyramid_AI_Player.
+ */
 Player<char>* pyramid_tic_tac_toe_UI::create_player(string& name, char symbol, PlayerType type) {
     cout << "Creating " << (type == PlayerType::HUMAN ? "human" : "computer")
         << " player: " << name << " (" << symbol << ")\n";
@@ -181,6 +224,9 @@ Player<char>* pyramid_tic_tac_toe_UI::create_player(string& name, char symbol, P
     return new Pyramid_AI_Player(name, symbol);
 }
 
+/**
+ * @brief Get a move from the human (validated) or let computer choose best_move.
+ */
 Move<char> *pyramid_tic_tac_toe_UI::get_move(Player<char> *player) {
     int row, col;
     pyramidTicTacToe_board* board = dynamic_cast<pyramidTicTacToe_board*>(player->get_board_ptr());

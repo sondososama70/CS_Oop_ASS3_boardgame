@@ -14,6 +14,12 @@ NumericalBoard::NumericalBoard() : Board(3, 3) {
     }
 }
 
+/**
+ * @brief Attempt to place a number at (x,y).
+ * Validates bounds, cell vacancy, number range, uniqueness and parity rule.
+ * @param move Pointer to Move<int> with coordinates and the number to place.
+ * @return true if placement successful; false otherwise.
+ */
 bool NumericalBoard::update_board(Move<int>* move) {
     int x = move->get_x();
     int y = move->get_y();
@@ -41,6 +47,11 @@ bool NumericalBoard::update_board(Move<int>* move) {
     n_moves++;
     return true;
 }
+
+/**
+ * @brief Check whether any row/column/diagonal sums to 15 using placed numbers.
+ * @return true if there exists a line summing to 15.
+ */
 bool NumericalBoard:: checkSum() {
     for (int i = 0; i < 3; i++) {
         if (board[i][0] && board[i][1] && board[i][2] &&
@@ -58,13 +69,40 @@ bool NumericalBoard:: checkSum() {
     return false;
 }
 
+/**
+ * @brief Game win if any line sums to 15.
+ */
 bool NumericalBoard::is_win(Player<int>* player) { return checkSum(); }
+
+/**
+ * @brief No separate lose implementation for this game.
+ */
 bool NumericalBoard::is_lose(Player<int>* player) { return false; }
+
+/**
+ * @brief Draw when board full and no winning sum.
+ */
 bool NumericalBoard::is_draw(Player<int>* player) { return (n_moves == 9 && !is_win(player)); }
+
+/**
+ * @brief Game over when win or draw.
+ */
 bool NumericalBoard::game_is_over(Player<int>* player) { return is_win(player) || is_draw(player); }
 
+/**
+ * @class NumericalUI
+ * @brief User interface for numerical tic-tac-toe: player setup and move input.
+ */
+
+/**
+ * @brief Construct a new NumericalUI.
+ */
 NumericalUI::NumericalUI() : UI("Welcome to Numerical Tic Tac Toe", 3) {}
 
+/**
+ * @brief Prompt for two player names and return created Player<int>* array.
+ * Player 1 (odds) and Player 2 (evens).
+ */
 Player<int>** NumericalUI :: setup_players() {
     Player<int>** players = new Player<int>*[2];
     string name1, name2;
@@ -80,6 +118,11 @@ Player<int>** NumericalUI :: setup_players() {
     return players;
 }
 
+/**
+ * @brief Get a move from the player: asks for x,y and the number to place.
+ * @param player Pointer to requesting player.
+ * @return allocated Move<int>* with coordinates and number.
+ */
 Move<int>* NumericalUI::get_move(Player<int>* player) {
     int x, y, num;
     cout << player->get_name() << " (Symbol: " << player->get_symbol() << ")"
@@ -88,6 +131,9 @@ Move<int>* NumericalUI::get_move(Player<int>* player) {
     return new Move<int>(x, y, num);
 }
 
+/**
+ * @brief Create and return a Player<int> instance.
+ */
 Player<int>* NumericalUI::create_player(string& name, int symbol, PlayerType type) {
     return new Player<int>(name, symbol, type);
 }
