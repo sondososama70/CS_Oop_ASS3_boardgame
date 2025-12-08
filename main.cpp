@@ -12,6 +12,7 @@
 #include "Infinity_XO.h"
 #include "pyramidTicTacToe.h"
 #include "Memory_XO.h"
+#include "Ultimate_XO.h"
 
 using namespace std;
 template <typename T>
@@ -61,7 +62,6 @@ int getMenuChoice() {
 
 // ===================== PLAY SUS GAME =====================
 void playSUSGame() {
-    cout << "\n=== SUS GAME ===\n";
 
     SUS board;
     SUS_UI ui;
@@ -160,6 +160,7 @@ void playSUSGame() {
     delete p1;
     delete p2;
 }
+
 //======conect4=======//
 void playConnect4Game() {
     Connect4_Board* board = new Connect4_Board();
@@ -294,8 +295,7 @@ int main() {
                  break;
              case 2:
                 playConnect4Game();
-
-                 break;
+                break;
              case 3:
                  playFiveByFiveGame();
                  break;
@@ -308,12 +308,12 @@ int main() {
                  break;
              case 6:
                   startGame(new DiamondTicTacToe() , new DiamondTicTacToeUI());
-                 break;
+                  break;
              case 7:
                  startGame(new FourxFour_Board(), new FourxFour_UI());
                  break;
              case 8:
-                  startGame(new pyramidTicTacToe_board, new pyramid_tic_tac_toe_UI());
+                 startGame(new pyramidTicTacToe_board, new pyramid_tic_tac_toe_UI());
                  break;
              case 9:
                  cout << "\nStarting Numerical Tic Tac Toe...\n";
@@ -323,13 +323,13 @@ int main() {
                  startGame(new Obstacles_XO(), new Obstacles_XO_UI());
                  break;
              case 11:
-                  startGame(new Infinity_XO(), new Infinity_XO_UI());
+                 startGame(new Infinity_XO(), new Infinity_XO_UI());
                  break;
              case 12:
                  // Bonus Game 1
                  break;
              case 13:
-                startGame(new Memory_XO(), new Memory_XO_UI());
+                 startGame(new Memory_XO(), new Memory_XO_UI());
                  break;
              case 14:
                  cout << "\nGoodbye, Thanks for playing.\n";
