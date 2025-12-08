@@ -167,13 +167,38 @@ void playConnect4Game() {
     Connect4_UI* ui = new Connect4_UI();
 
     string name1, name2;
+    int choice1 , choice2;
+    PlayerType type1, type2;
+
+    //Player 1:
     cout << "Enter Player 1 name (X): ";
     cin >> name1;
-    cout << "Enter Player 2 name (O): ";
-    cin >> name2;
+    cout << "Choose Player 1 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice1;
 
-    Player<char>* p1 = new Player<char>(name1, 'X', PlayerType::HUMAN);
-    Player<char>* p2 = new Player<char>(name2, 'O', PlayerType::HUMAN);
+    while (choice1 < 1 || choice1 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice1;
+    }
+    type1 = (choice1 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+    //Player 2:
+    cout << "Enter Player 2 name: ";
+    cin >> name2;
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n" << "2. Computer\n" << "Choose (1 or 2): ";
+    cin >> choice2;
+
+    while (choice2 < 1 || choice2 > 2) {
+        cout << "Invalid choice , Choose 1 (Human) or 2 (Computer): ";
+        cin >> choice2;
+    }
+    type2 = (choice2 == 1) ? PlayerType::HUMAN : PlayerType::COMPUTER;
+
+
+    Player<char>* p1 = new Player<char>(name1, 'X', type1);
+    Player<char>* p2 = new Player<char>(name2, 'O', type2);
 
     Player<char>* players[2] = {p1, p2};
 
@@ -280,6 +305,23 @@ void playWordTicTacToeGame() {
     delete p2;
 }
 
+// ===================== PLAY Ultimate TIC-TAC-TOE GAME =====================
+void playUltimate(){
+    UltimateBoard *board = new UltimateBoard();
+    Ultimate_UI *ui = new Ultimate_UI(board);
+
+    Player<char> **players = ui->setup_players();
+
+    UltimateGameManager gameManager(board, players[0], players[1], ui);
+    gameManager.run();
+
+    delete players[0];
+    delete players[1];
+    delete[] players;
+    delete board;
+    delete ui;
+}
+
 //=====================MAIN======================//
 int main() {
     int choice;
@@ -326,7 +368,7 @@ int main() {
                  startGame(new Infinity_XO(), new Infinity_XO_UI());
                  break;
              case 12:
-                 // Bonus Game 1
+                 playUltimate();
                  break;
              case 13:
                  startGame(new Memory_XO(), new Memory_XO_UI());

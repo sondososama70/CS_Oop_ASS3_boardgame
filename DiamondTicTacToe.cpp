@@ -189,6 +189,5 @@ Move<char>* DiamondAI::get_move(Player<char>* p) {
             }
         }
     }
-
     return bestMove;
 }

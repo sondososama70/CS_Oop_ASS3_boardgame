@@ -91,7 +91,3 @@ Move<int>* NumericalUI::get_move(Player<int>* player) {
 Player<int>* NumericalUI::create_player(string& name, int symbol, PlayerType type) {
     return new Player<int>(name, symbol, type);
 }
-
-
-
-
