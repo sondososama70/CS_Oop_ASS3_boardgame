@@ -62,7 +62,6 @@ int getMenuChoice() {
 
 // ===================== PLAY SUS GAME =====================
 void playSUSGame() {
-    cout << "\n=== SUS GAME ===\n";
 
     SUS board;
     SUS_UI ui;
