@@ -68,7 +68,9 @@ void playSUSGame() {
 
     string name1, name2;
     char sym1, sym2;
+    int type1, type2;
 
+    // Player 1
     cout << "Enter Player 1 name: ";
     cin >> name1;
 
@@ -82,16 +84,55 @@ void playSUSGame() {
     }
     sym1 = toupper(sym1);
 
+    // Choose player type
+    cout << "Choose Player 1 type:\n";
+    cout << "1. Human\n";
+    cout << "2. Computer (AI)\n";
+    cout << "Choice: ";
+    cin >> type1;
+
     // Player 2 automatically gets the other symbol
     sym2 = (sym1 == 'S' ? 'U' : 'S');
 
+    cout << "\nPlayer 2 will use symbol: " << sym2 << "\n";
     cout << "Enter Player 2 name: ";
     cin >> name2;
 
-    cout << name2 << " will use symbol: " << sym2 << "\n\n";
+    cout << "Choose Player 2 type:\n";
+    cout << "1. Human\n";
+    cout << "2. Computer (AI)\n";
+    cout << "Choice: ";
+    cin >> type2;
 
-    Player<char>* p1 = ui.create_player(name1, sym1, PlayerType::HUMAN);
-    Player<char>* p2 = ui.create_player(name2, sym2, PlayerType::HUMAN);
+    Player<char>* p1;
+    Player<char>* p2;
+
+    // Create players based on type
+    if (type1 == 2) { // AI player
+        p1 = new SUS_AI_Player(name1, sym1, PlayerType::COMPUTER);
+    } else { // Human player
+        p1 = new Player<char>(name1, sym1, PlayerType::HUMAN);
+    }
+
+    if (type2 == 2) { // AI player
+        p2 = new SUS_AI_Player(name2, sym2, PlayerType::COMPUTER);
+    } else { // Human player
+        p2 = new Player<char>(name2, sym2, PlayerType::HUMAN);
+    }
+
+    // Give AI players the game board reference
+    if (type1 == 2) {
+        SUS_AI_Player* ai1 = dynamic_cast<SUS_AI_Player*>(p1);
+        if (ai1) {
+            ai1->set_game_board(&board);
+        }
+    }
+    if (type2 == 2) {
+        SUS_AI_Player* ai2 = dynamic_cast<SUS_AI_Player*>(p2);
+        if (ai2) {
+            ai2->set_game_board(&board);
+        }
+    }
 
     Player<char>* players[2];
 
@@ -103,6 +144,13 @@ void playSUSGame() {
         players[0] = p2;
         players[1] = p1;
     }
+
+    // Set board pointer for all players
+    players[0]->set_board_ptr(&board);
+    players[1]->set_board_ptr(&board);
+
+    cout << "\n=== Game Started ===\n";
+    cout << "S starts first!\n\n";
 
     GameManager<char> game(&board, players, &ui);
     game.run();
