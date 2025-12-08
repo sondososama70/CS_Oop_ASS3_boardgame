@@ -140,13 +140,22 @@ Connect4_UI::~Connect4_UI() {
  */
 Move<char>* Connect4_UI::get_move(Player<char>* player) {
     int col;
-    cout << player->get_name()
-         << " (" << player->get_symbol()
-         << ") choose a column (0-6): ";
-    cin >> col;
+
+    if (player->get_type() == PlayerType::COMPUTER) {
+        // Random move from column 0 to 6
+        col = rand() % 7;
+        cout << player->get_name() << " (Computer) played column: " << col << endl;
+    } else {
+        cout << player->get_name()
+             << " (" << player->get_symbol()
+             << ") choose a column (0-6): ";
+        cin >> col;
+    }
 
     return new Move<char>(0, col, player->get_symbol());
 }
+
+
 
 /**
  * @brief Create a Connect4_Player with given attributes.
