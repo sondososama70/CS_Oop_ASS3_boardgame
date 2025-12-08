@@ -216,6 +216,3 @@ Move<char> *pyramid_tic_tac_toe_UI::get_move(Player<char> *player) {
 Move<char>* Pyramid_AI_Player:: get_move(Board<char>* board) {
     return nullptr;
 }
-
-
-

@@ -104,4 +104,3 @@ Move<char>* Connect4_UI::get_move(Player<char>* player) {
 Player<char>* Connect4_UI::create_player(string& name, char symbol, PlayerType type) {
     return new Connect4_Player(name, symbol, type);
 }
-
