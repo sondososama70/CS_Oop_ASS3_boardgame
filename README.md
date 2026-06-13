@@ -437,14 +437,6 @@ Enter move: -1 0   # Negative index (should reject)
 
 ---
 
-## Author
-
-**Sondos Osama**
-- GitHub: [@sondososama70](https://github.com/sondososama70)
-- Repository: [CS_Oop_ASS3_boardgame](https://github.com/sondososama70/CS_Oop_ASS3_boardgame)
-
----
-
 ## Documentation References
 
 - **Game Manual:** [Gameboard Doc..pdf](https://github.com/sondososama70/CS_Oop_ASS3_boardgame/blob/main/Gameboard%20Doc..pdf) - Complete rules for all games
@@ -462,13 +454,3 @@ Enter move: -1 0   # Negative index (should reject)
 - **Lines of Code:** ~3,500+ across all files
 - **Build System:** CMake 3.31+
 - **Memory Management:** Manual with proper cleanup
-
----
-
-**Last Updated:** December 8, 2025  
-**Version:** 1.0.0  
-**Status:** Active Development
-
----
-
-> 💡 **Tip:** Refer to `Gameboard Doc..pdf` for detailed game rules and strategy tips before playing!
