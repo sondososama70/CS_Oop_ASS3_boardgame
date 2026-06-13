@@ -4,7 +4,6 @@
 ![HTML](https://img.shields.io/badge/HTML-87.3%25-orange?style=flat-square)
 ![CMake](https://img.shields.io/badge/CMake-Build-brightgreen?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## Project Overview
 
@@ -400,31 +399,6 @@ Enter move: -1 0   # Negative index (should reject)
 
 ---
 
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| **CMake not found** | Install CMake from https://cmake.org/download/ |
-| **Compilation errors with C++20** | Update compiler to support C++20 (GCC 10+, Clang 10+, MSVC 2019+) |
-| **"Cannot find header file"** | Ensure all `.h` files are in the same directory |
-| **Game crashes on input** | Enter valid coordinates within board bounds (0 to size-1) |
-| **AI makes invalid move** | Ensure AI logic checks `update_board()` return value |
-| **Build fails on Windows** | Use correct CMake generator: `-G "Visual Studio 16 2019"` |
-| **Executable not generated** | Check CMakeLists.txt has correct source files listed |
-| **Memory leaks on exit** | Verify all `new` calls matched with `delete` in game cleanup |
-
-**General Debugging:**
-```bash
-# Build in debug mode
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build . --config Debug
-
-# Run with verbose output
-./CS_ASSIGNMENT2_SOUND 2>&1 | tee output.log
-```
-
----
-
 ## Future Improvements
 
 ### Roadmap
@@ -460,12 +434,6 @@ cmake --build . --config Debug
    - Unit test suite with Google Test framework
    - Integration tests for all game variants
    - Performance benchmarks
-
----
-
-## License
-
-This project is provided as-is for educational and assignment purposes. No specific license is currently applied. For licensing inquiries, please contact the repository owner.
 
 ---
 
